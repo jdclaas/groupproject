@@ -42,3 +42,19 @@ Rough breakdown of tasks
 - Sass with/ CSS Compiler
 - Bootstrap with Sass integrated
 
+MVP Overview:
+* With your group, answer each of the following questions:
+  1. Who is your target audience?
+    - Anyone interested in candidates running for office in 2020
+  2. What is the problem that the product will address?
+    - Making it easy to compare candidates, in real-time, without relying on news sources to report on certain candidates.
+  3. What is the primary goal of the product?
+    - Non-partisan way to view candidate information from multiple sources
+  4. Identify and prioritize essential user stories (limit this to 3 or fewer)?
+    a. As a user, I want to be able to see information about candidate 1 and candidate 2 (of my choice) side-by-side.
+    b. As a user, I want to be able to search by name (in a text box) for candidates I would like to learn more about.
+    c. As a user, I want to be able to see the most recent new articles, from multiple sources, about the candidate I've chosen.
+  Additional features
+  - Trending searches
+  - Events calendar with all candidates
+  - Podcasts
