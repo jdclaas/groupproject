@@ -105,6 +105,11 @@
         queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + candidate + "&api-key="+apikey+"&fl=web_url,headline,snippet,multimedia";
         console.log(queryURL)
 
+        // Grab text the user typed into the search input, add to the queryParams object
+        search = $("#basic-text1")
+             .val()
+            .trim();
+
       $.ajax({
         url: queryURL,
         method: "GET"
