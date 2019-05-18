@@ -14,10 +14,13 @@ body{
 }
 
 #nav-bar{
+    
     background-color:#0f1317;
     text-align:center;
     font-family: 'Times New Roman', Times, serif;
-    color:#edecea
-    
-
+    font-size: 35px;
+    }
+.container{
+    margin:20px;
+    border:1px solid #bdbdbd;
 }
