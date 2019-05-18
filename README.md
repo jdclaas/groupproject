@@ -25,6 +25,8 @@ https://medium.com/ndp-annotations/civic-and-political-apis-data-sets-and-websit
 - Google Civic API
 https://developers.google.com/civic-information/
     - Has a geo-locator function
+- Ballotpedia
+- Wikipedia
 - Votesmart API
 https://votesmart.org/share/api#.XNtxMshKhPZ
 - Podcast
