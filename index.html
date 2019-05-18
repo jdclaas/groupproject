@@ -19,6 +19,9 @@
 .new-roll {
   margin: 20px, auto;
 }
+#snippet {
+  float: right;
+}
 </style>
 </head>
 <body>
@@ -94,20 +97,20 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
   
-  var apikey = "Z9M8GGqHZC3JNlv6IIVYHQrTlIPEWAlA"
+  var apikey = "b0ea2322bfc0471a987b7f4ecef6a106"
     var articleNum = 5;
-    var candidate = 2020;
+    var candidate = "2020 election";
     var queryURL;
         // On click of search button - push search term into candidate variable
-        $('body').on("click", function() {
-            event.preventDefault();
-            console.log("Submit Clicked")
-            candidate = $('#searchTerms').val();
-            console.log(candidate)
-        });
+        // $('body').on("click", function() {
+        //     event.preventDefault();
+        //     console.log("Submit Clicked")
+        //     candidate = $('#searchTerms').val();
+        //     console.log(candidate)
+        // });
 
-        queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + candidate + "&api-key="+apikey+"&fl=web_url,headline,snippet,multimedia";
-        console.log(queryURL)
+        queryURL = "https://newsapi.org/v2/everything?q=" + candidate + "&apiKey="+apikey+"&language=en&sources=abc-news,usa-today,cnn,cbs-news,fox-news";
+          console.log(queryURL)
 
         // Grab text the user typed into the search input, add to the queryParams object
         search = $("#basic-text1")
@@ -136,29 +139,28 @@
         // Loop to bring back articles
         for (i = 0; i < articleNum; i++) {
         //  - number of articles requested - default is 5 (articleNum)
-            console.log(response.response.docs[i]) 
-            var articleDiv = $('<div class="news-roll">');
-            console.log(articleDiv)
-            var headlineText = JSON.stringify(response.response.docs[i].headline.main);
-            headlineText = headlineText.slice(1, -1);
-            var headline = $('<h2>').text(headlineText);
-            console.log(headlineText);
-            var snippetText = response.response.docs[i].snippet;
-            var snippet = $('<p>').text(snippetText);
-            var breakBR = $('<br>')
-            console.log(snippetText)
-            var articleImgPath = JSON.stringify(response.response.docs[i].multimedia[0].url);
-            var articleImgURL = articleImgPath.slice(1, -1);
-            articleImgURL = ("https://www.nytimes.com/" + articleImgURL);
+              console.log(response.articles[i]) 
+            var articleDiv = $('<div class="news-roll row">');
+              console.log(articleDiv)
+            var headline = $('<h3>').text(response.articles[i].title);
+              console.log(response.articles[i].title);
+            var snippet = $('<span id="snippet">').text(response.articles[i].description);
+              console.log(response.articles[i].description)        
             var articleImg = $('<img class="news-img">');
-        articleImg.attr("src", articleImgURL);
-        console.log(articleImgURL)
-        articleDiv.append(articleImg);
-        articleDiv.append(headline);
-        articleDiv.append(snippet);
-        articleDiv.append(breakBR);
-        console.log("Article Div: " + articleDiv)
-        $("#news-articles").append(articleDiv)
+                articleImg.attr("src", response.articles[i].urlToImage);
+              console.log(response.articles[i].urlToImage);
+            var pubDate = $('<span>').text(response.articles[i].publishedAt);
+              console.log(response.articles[i].publishedAt);
+            var url = $('<a>');
+                url.attr("href", response.articles[i].url);
+                url.append(headline);
+                url.append(articleImg);
+              console.log(response.articles[i].url);
+            articleDiv.append(url);
+            articleDiv.append(pubDate);
+            articleDiv.append(snippet);
+              console.log("Article Div: " + articleDiv)
+            $("#news-articles").append(articleDiv)
         }
 
       });
