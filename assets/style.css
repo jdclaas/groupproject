@@ -11,4 +11,12 @@ body{
     border: 1px solid #bdbdbd;
     border-top-right-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
+    
+}
+
+.nav-bar{
+    background-color: #00bbe2;
+    text-align: center;
+    
+
 }
