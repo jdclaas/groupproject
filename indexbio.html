@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel ="stylesheet" href="assets/style.css" type="text/css">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+
+    <title>Document</title>
+</head>
+<body>
+
+<div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4 text-center"> Navigation</h1>
+         
+        </div>
+
+
+
+
+    <div class="card"> 
+        
+     <div class="card-body">
+         
+        
+    <div class="container">    
+
+    <div class="row">
+        <div class="col-sm-auto">
+                <div class="card" style="width: 18rem;">
+                        <img src="assets/images/Placeholder.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                      </div>
+        </div>
+
+        <div class="col-8" class="text-center">
+            <h2 class="candiateName">Canidate Information</h2>
+
+            
+            <br>
+
+            <p class="name"><strong>Full Name: </strong></p>
+
+            <p class="gender"><strong>Gender: </strong></p>
+
+            <p class="dob"><strong>Date of Birth: </strong></p>
+
+            <P class="placeOfBirth"><strong>Place of Birth: </strong></P>
+            
+            <p class="party"><strong>Party: </strong></p> 
+
+            <p class='bio'><strong>Bio: </strong></p>
+
+            
+
+
+        </div>
+
+     </div>   
+
+    </div>
+
+    </div>
+    </div>    
+       
+</div>
+
+<script>
+
+ $(document).one("click", function(){
+
+
+var candidateImg;
+var firstName = "John"
+var lastName = "Doe"
+var gender = "Male"
+var dob = "1/1/1970"
+var placeOfBirth = "Milwaukee, WI"
+var party = "Independent";
+var bio = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima omnis asperiores non impedit temporibus, sapiente neque iure blanditiis deserunt? Veniam culpa quod incidunt iusto ea ad quae dolorem itaque accusantium. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem ab beatae saepe, voluptatem culpa sit. Similique fuga consequatur natus pariatur facilis eum, ea esse soluta tempora nam aut eius officia! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit quis a, nostrum molestiae corrupti, odio temporibus veritatis quae iure cum aspernatur blanditiis nihil laborum in explicabo expedita amet, tempore fugiat?"
+
+$(".name").append(firstName + " " + lastName);
+$(".gender").append(gender);
+$(".dob").append(dob);
+$(".placeOfBirth").append(placeOfBirth);
+$(".party").append(party);
+$(".bio").append(bio);
+
+event.preventDefault();
+
+
+});
+
+
+
+
+
+</script>
+
+
+<script src="assets/app.js"></script>
+    
+</body>
+</html>
