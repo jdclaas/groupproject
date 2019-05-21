@@ -7,10 +7,7 @@
 
     <title>Group Project</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <!-- Bootstrap Javascript -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
 <style>
 .news-img {
   float: left;
@@ -19,13 +16,11 @@
 .new-roll {
   margin: 20px, auto;
 }
-#snippet {
-  float: right;
-}
 </style>
 </head>
 <body>
   <div class="container">
+  
     <div class="row">
       <div class="col-sm-4">
         <p>2020</p>
@@ -51,23 +46,12 @@
       </div>
     </div>
   </div>
-  <title>Document</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-</head>
-<body>
-  <container>
 <!-- Search Bar -->
-<div class="input-group md-form form-sm form-1 pl-0">
-  <div class="input-group-prepend">
-    <span class="input-group-text purple lighten-3" id="basic-text1"><i class="fas fa-search text-white"
-        aria-hidden="true"></i></span>
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
   </div>
-  <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search">
 </div>
 
 
@@ -85,7 +69,6 @@
     <a class="dropdown-item" href="#">Separated link</a>
   </div>
 </div>
-</container>
     <h1>Group Project</h1>
     <h2>Second header</h2>
     <h3>Third header</h3>
@@ -97,11 +80,59 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
   
-  var apikey = "b0ea2322bfc0471a987b7f4ecef6a106"
+  var apikey = "Z9M8GGqHZC3JNlv6IIVYHQrTlIPEWAlA"
     var articleNum = 5;
-    var candidate = "2020 election";
+    var don = "donald trump"
+    var bernie = "bernie sanders"
+    var kamala = "Kamala D. Harris"
+    var cory = "Cory Booker"
+
+    var candidate = 2020;
     var queryURL;
-        // On click of search button - push search term into candidate variable
+
+
+    // function for adding dropbox links
+    function dropboxrequest(url){
+      $.ajax({
+        url: url,
+        method: "GET"
+      }).then(function(response) {
+        $('#news-articles').empty()
+      
+        // Loop to bring back articles
+        
+        for (i = 0; i < articleNum; i++) {
+        //  - number of articles requested - default is 5 (articleNum)
+            console.log(response.response.docs[i]) 
+            var articleDiv = $('<div class="news-roll">');
+            console.log(articleDiv)
+            var headlineText = JSON.stringify(response.response.docs[i].headline.main);
+            headlineText = headlineText.slice(1, -1);
+            var headline = $('<h2>').text(headlineText);
+            console.log(headlineText);
+            var snippetText = response.response.docs[i].snippet;
+            var snippet = $('<p>').text(snippetText);
+            var breakBR = $('<br>')
+            console.log(snippetText)
+            var articleImgPath = JSON.stringify(response.response.docs[i].multimedia[0].url);
+            var articleImgURL = articleImgPath.slice(1, -1);
+            articleImgURL = ("https://www.nytimes.com/" + articleImgURL);
+            var articleImg = $('<img class="news-img">');
+        articleImg.attr("src", articleImgURL);
+        console.log(articleImgURL)
+        articleDiv.append(articleImg);
+        articleDiv.append(headline);
+        articleDiv.append(snippet);
+        articleDiv.append(breakBR);
+        console.log("Article Div: " + articleDiv)
+        $("#news-articles").append(articleDiv)
+        }
+
+      });
+
+    }   
+    
+    // On click of search button - push search term into candidate variable
         // $('body').on("click", function() {
         //     event.preventDefault();
         //     console.log("Submit Clicked")
@@ -109,62 +140,86 @@
         //     console.log(candidate)
         // });
 
-        queryURL = "https://newsapi.org/v2/everything?q=" + candidate + "&apiKey="+apikey+"&language=en&sources=abc-news,usa-today,cnn,cbs-news,fox-news";
-          console.log(queryURL)
+        queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + candidate + "&api-key="+apikey+"&fl=web_url,headline,snippet,multimedia";
+        console.log(queryURL)
 
-        // Grab text the user typed into the search input, add to the queryParams object
-        search = $("#basic-text1")
-             .val()
-            .trim();
-        // On click listeners for Drop down
-    $( "#donald" ).click(function() {
-          console.log( "Donald Trump" );
-    });
-      $( "#bernie" ).click(function() {
-        console.log( "Bernie Sanders" );
-    });
-    $( "#kamala" ).click(function() {
-        console.log( "Kamala D. Harris" );
-    });
-    $( "#cory" ).click(function() {
-        console.log( "Cory Booker" );
-    });
+        dropboxrequest(queryURL)
         
 
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function(response) {
+      // $.ajax({
+      //   url: queryURL,
+      //   method: "GET"
+      // }).then(function(response) {
 
-        // Loop to bring back articles
-        for (i = 0; i < articleNum; i++) {
-        //  - number of articles requested - default is 5 (articleNum)
-              console.log(response.articles[i]) 
-            var articleDiv = $('<div class="news-roll row">');
-              console.log(articleDiv)
-            var headline = $('<h3>').text(response.articles[i].title);
-              console.log(response.articles[i].title);
-            var snippet = $('<span id="snippet">').text(response.articles[i].description);
-              console.log(response.articles[i].description)        
-            var articleImg = $('<img class="news-img">');
-                articleImg.attr("src", response.articles[i].urlToImage);
-              console.log(response.articles[i].urlToImage);
-            var pubDate = $('<span>').text(response.articles[i].publishedAt);
-              console.log(response.articles[i].publishedAt);
-            var url = $('<a>');
-                url.attr("href", response.articles[i].url);
-                url.append(headline);
-                url.append(articleImg);
-              console.log(response.articles[i].url);
-            articleDiv.append(url);
-            articleDiv.append(pubDate);
-            articleDiv.append(snippet);
-              console.log("Article Div: " + articleDiv)
-            $("#news-articles").append(articleDiv)
-        }
+      
+      //   // Loop to bring back articles
+        
+      //   for (i = 0; i < articleNum; i++) {
+      //   //  - number of articles requested - default is 5 (articleNum)
+      //       console.log(response.response.docs[i]) 
+      //       var articleDiv = $('<div class="news-roll">');
+      //       console.log(articleDiv)
+      //       var headlineText = JSON.stringify(response.response.docs[i].headline.main);
+      //       headlineText = headlineText.slice(1, -1);
+      //       var headline = $('<h2>').text(headlineText);
+      //       console.log(headlineText);
+      //       var snippetText = response.response.docs[i].snippet;
+      //       var snippet = $('<p>').text(snippetText);
+      //       var breakBR = $('<br>')
+      //       console.log(snippetText)
+      //       var articleImgPath = JSON.stringify(response.response.docs[i].multimedia[0].url);
+      //       var articleImgURL = articleImgPath.slice(1, -1);
+      //       articleImgURL = ("https://www.nytimes.com/" + articleImgURL);
+      //       var articleImg = $('<img class="news-img">');
+      //   articleImg.attr("src", articleImgURL);
+      //   console.log(articleImgURL)
+      //   articleDiv.append(articleImg);
+      //   articleDiv.append(headline);
+      //   articleDiv.append(snippet);
+      //   articleDiv.append(breakBR);
+      //   console.log("Article Div: " + articleDiv)
+      //   $("#news-articles").append(articleDiv)
+      //   }
 
-      });
+      // });
+
+
+    // Grab text the user typed into the search input, add to the queryParams object
+        search = $(".form-control")
+             .val()
+            .trim();
+
+    // On click listeners for Drop down
+    $( "#donald" ).click(function() {
+          console.log( "Donald Trump" )
+          queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + don + "&api-key="+apikey+"&fl=web_url,headline,snippet,multimedia";
+        console.log(queryURL)
+        dropboxrequest (queryURL)
+
+          
+          
+          
+    });
+      $( "#bernie" ).click(function() {
+        console.log( "Bernie Sanders" )
+        queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + bernie + "&api-key="+apikey+"&fl=web_url,headline,snippet,multimedia";
+        console.log(queryURL)
+        dropboxrequest (queryURL);
+    });
+    $( "#kamala" ).click(function() {
+        console.log( "Kamala D. Harris" )
+        queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + kamala + "&api-key="+apikey+"&fl=web_url,headline,snippet,multimedia";
+        console.log(queryURL)
+        dropboxrequest (queryURL);
+    });
+    $( "#cory" ).click(function() {
+      console.log( "Cory" )
+        queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + cory + "&api-key="+apikey+"&fl=web_url,headline,snippet,multimedia";
+        console.log(queryURL)
+        dropboxrequest (queryURL);
+    });
+
+
     </script>
->>>>>>> 3cb50afff13eaa190a80c1ad7ae73ff9c4613b76
 </body>
 </html>

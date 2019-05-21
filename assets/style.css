@@ -1,6 +1,5 @@
-body{
-    background-color: blue;
-}
+
+
 .active-cyan-2 input[type=text]:focus:not([readonly]) {
     border-bottom: 1px solid #4dd0e1;
     box-shadow: 0 1px 0 0 #4dd0e1;
@@ -11,4 +10,16 @@ body{
     border: 1px solid #bdbdbd;
     border-top-right-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
+}
+
+#nav-bar{
+    
+    background-color:#0f1317;
+    text-align:center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 35px;
+    }
+.container{
+    
+    border:1px solid #bdbdbd;
 }
