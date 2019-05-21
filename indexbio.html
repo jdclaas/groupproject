@@ -47,17 +47,17 @@
             
             <br>
 
-            <p class="name"><strong>Full Name: </strong></p>
+            <p class="name"><strong></strong></p>
 
-            <p class="gender"><strong>Gender: </strong></p>
+            <p class="gender"><strong></strong></p>
 
-            <p class="dob"><strong>Date of Birth: </strong></p>
+            <p class="dob"><strong></strong></p>
 
-            <P class="placeOfBirth"><strong>Place of Birth: </strong></P>
+            <P class="placeOfBirth"><strong></strong></P>
             
-            <p class="party"><strong>Party: </strong></p> 
+            <p class="party"><strong></strong></p> 
 
-            <p class='bio'><strong>Bio: </strong></p>
+            <p class='bio'><strong></strong></p>
 
             
 
@@ -79,20 +79,80 @@
 
 
 var candidateImg;
-var firstName = "John"
-var lastName = "Doe"
-var gender = "Male"
-var dob = "1/1/1970"
-var placeOfBirth = "Milwaukee, WI"
-var party = "Independent";
-var bio = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima omnis asperiores non impedit temporibus, sapiente neque iure blanditiis deserunt? Veniam culpa quod incidunt iusto ea ad quae dolorem itaque accusantium. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem ab beatae saepe, voluptatem culpa sit. Similique fuga consequatur natus pariatur facilis eum, ea esse soluta tempora nam aut eius officia! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit quis a, nostrum molestiae corrupti, odio temporibus veritatis quae iure cum aspernatur blanditiis nihil laborum in explicabo expedita amet, tempore fugiat?"
+var firstName;
+var lastName;
+var gender;
+var dob;
+var placeOfBirth;
+var party;
+var bio;
+var apikey = "a8c2fd7495b5d4f49f009034402bffb1";
+var queryURL;
+// Create the return object
 
-$(".name").append(firstName + " " + lastName);
-$(".gender").append(gender);
-$(".dob").append(dob);
-$(".placeOfBirth").append(placeOfBirth);
-$(".party").append(party);
-$(".bio").append(bio);
+queryURL = "http://api.votesmart.org/CandidateBio.getBio?key="+apikey+"&candidateId=9490";
+console.log("XML :" + queryURL);
+
+// Modified version from here: http://davidwalsh.name/convert-xml-json
+function xmlToJson(xml) {
+
+// Create the return object
+var obj = {};
+
+if (xml.nodeType == 1) { // element
+    // do attributes
+    if (xml.attributes.length > 0) {
+    obj["@attributes"] = {};
+        for (var j = 0; j < xml.attributes.length; j++) {
+            var attribute = xml.attributes.item(j);
+            obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+        }
+    }
+} else if (xml.nodeType == 3) { // text
+    obj = xml.nodeValue;
+}
+
+// do children
+// If just one text node inside
+if (xml.hasChildNodes() && xml.childNodes.length === 1 && xml.childNodes[0].nodeType === 3) {
+    obj = xml.childNodes[0].nodeValue;
+}
+else if (xml.hasChildNodes()) {
+    for(var i = 0; i < xml.childNodes.length; i++) {
+        var item = xml.childNodes.item(i);
+        var nodeName = item.nodeName;
+        if (typeof(obj[nodeName]) == "undefined") {
+            obj[nodeName] = xmlToJson(item);
+        } else {
+            if (typeof(obj[nodeName].push) == "undefined") {
+                var old = obj[nodeName];
+                obj[nodeName] = [];
+                obj[nodeName].push(old);
+            }
+            obj[nodeName].push(xmlToJson(item));
+        }
+    }
+}
+return obj;
+};
+
+// xmlToJson();
+// console.log("Object: " + obj);
+
+ $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function(response) {
+            var json = xmlToJson(response);
+            console.log(json);
+        });
+
+// $(".name").append("Full Name: " + firstName + " " + lastName);
+// $(".gender").append("Gender: " + gender);
+// $(".dob").append("Date of Birth: " + dob);
+// $(".placeOfBirth").append("Place of Birth: " + placeOfBirth);
+// $(".party").append("Party Affiliation: " + party);
+// $(".bio").append("Bio: " + bio);
 
 event.preventDefault();
 
