@@ -23,15 +23,17 @@
 </head>
 <body>
   <div class="container">
+    <div id="top-container">
   
     <div class="row">
       <div class="col-sm-4">
-        <p>2020</p>
+          <img src="assets/images/2020-LOGO-v1.jpg" class="img-fluid" alt="Responsive image">
+        <!-- <p>2020</p>
         <p>know your politicains</p>
         <p>formulate a choice</p>
-        <p>STAY WOKE</p>
+        <p>STAY WOKE</p> -->
       </div>
-      <div class="col-sm-8" id="nav-bar">
+      <div class="col-sm-8" id="nav-bar"><h1>
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link active" href="#">news</a>
@@ -43,12 +45,23 @@
             <a class="nav-link" href="#">news</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">podcasts</a>
+            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">podcasts</a></h1>
           </li>
         </ul>
       </div>
     </div>
   </div>
+</div>
+  <title>Document</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <container>
 <!-- Search Bar -->
 <div class="input-group md-form form-sm form-1 pl-0">
   <div class="input-group-prepend">
@@ -66,13 +79,14 @@
     Top Candidates
   </button>
   <div class="dropdown-menu">
-    <a class="dropdown-item" id= "donald" href="#">Donald Trump</a>
-    <a class="dropdown-item bernie" id = 'bernie' href="#">Bernie Sanders</a>
-    <a class="dropdown-item" id = 'kamala'href="#">Kamala D. Harris</a>
-    <a class="dropdown-item" id = 'cory' href="#">Cory Booker</a>
+    <a class="dropdown-item" href="#">Candidate 1</a>
+    <a class="dropdown-item" href="#">Candidate 2</a>
+    <a class="dropdown-item" href="#">Candidate 3</a>
+    <div class="dropdown-divider"></div>
     <a class="dropdown-item" href="#">Separated link</a>
   </div>
 </div>
+</container>
     <h1>Group Project</h1>
     <h2>Second header</h2>
     <h3>Third header</h3>
@@ -84,39 +98,20 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
   
-  var apikey = "b0ea2322bfc0471a987b7f4ecef6a106"
+  var apikey = "Z9M8GGqHZC3JNlv6IIVYHQrTlIPEWAlA"
     var articleNum = 5;
-    var candidate = "2020 election";
+    var candidate = 2020;
     var queryURL;
         // On click of search button - push search term into candidate variable
-        // $('body').on("click", function() {
-        //     event.preventDefault();
-        //     console.log("Submit Clicked")
-        //     candidate = $('#searchTerms').val();
-        //     console.log(candidate)
-        // });
+        $('body').on("click", function() {
+            event.preventDefault();
+            console.log("Submit Clicked")
+            candidate = $('#searchTerms').val();
+            console.log(candidate)
+        });
 
-        queryURL = "https://newsapi.org/v2/everything?q=" + candidate + "&apiKey="+apikey+"&language=en&sources=abc-news,usa-today,cnn,cbs-news,fox-news";
-          console.log(queryURL)
-
-        // Grab text the user typed into the search input, add to the queryParams object
-        search = $("#basic-text1")
-             .val()
-            .trim();
-        // On click listeners for Drop down
-    $( "#donald" ).click(function() {
-          console.log( "Donald Trump" );
-    });
-      $( "#bernie" ).click(function() {
-        console.log( "Bernie Sanders" );
-    });
-    $( "#kamala" ).click(function() {
-        console.log( "Kamala D. Harris" );
-    });
-    $( "#cory" ).click(function() {
-        console.log( "Cory Booker" );
-    });
-        
+        queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + candidate + "&api-key="+apikey+"&fl=web_url,headline,snippet,multimedia";
+        console.log(queryURL)
 
       $.ajax({
         url: queryURL,
@@ -126,28 +121,29 @@
         // Loop to bring back articles
         for (i = 0; i < articleNum; i++) {
         //  - number of articles requested - default is 5 (articleNum)
-              console.log(response.articles[i]) 
-            var articleDiv = $('<div class="news-roll row">');
-              console.log(articleDiv)
-            var headline = $('<h3>').text(response.articles[i].title);
-              console.log(response.articles[i].title);
-            var snippet = $('<span id="snippet">').text(response.articles[i].description);
-              console.log(response.articles[i].description)        
+            console.log(response.response.docs[i]) 
+            var articleDiv = $('<div class="news-roll">');
+            console.log(articleDiv)
+            var headlineText = JSON.stringify(response.response.docs[i].headline.main);
+            headlineText = headlineText.slice(1, -1);
+            var headline = $('<h2>').text(headlineText);
+            console.log(headlineText);
+            var snippetText = response.response.docs[i].snippet;
+            var snippet = $('<p>').text(snippetText);
+            var breakBR = $('<br>')
+            console.log(snippetText)
+            var articleImgPath = JSON.stringify(response.response.docs[i].multimedia[0].url);
+            var articleImgURL = articleImgPath.slice(1, -1);
+            articleImgURL = ("https://www.nytimes.com/" + articleImgURL);
             var articleImg = $('<img class="news-img">');
-                articleImg.attr("src", response.articles[i].urlToImage);
-              console.log(response.articles[i].urlToImage);
-            var pubDate = $('<span>').text(response.articles[i].publishedAt);
-              console.log(response.articles[i].publishedAt);
-            var url = $('<a>');
-                url.attr("href", response.articles[i].url);
-                url.append(headline);
-                url.append(articleImg);
-              console.log(response.articles[i].url);
-            articleDiv.append(url);
-            articleDiv.append(pubDate);
-            articleDiv.append(snippet);
-              console.log("Article Div: " + articleDiv)
-            $("#news-articles").append(articleDiv)
+        articleImg.attr("src", articleImgURL);
+        console.log(articleImgURL)
+        articleDiv.append(articleImg);
+        articleDiv.append(headline);
+        articleDiv.append(snippet);
+        articleDiv.append(breakBR);
+        console.log("Article Div: " + articleDiv)
+        $("#news-articles").append(articleDiv)
         }
 
       });
