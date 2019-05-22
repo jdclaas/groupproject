@@ -70,7 +70,26 @@
   background-color: #00BBE2;
 }
 
+
 #news-articles .news-roll:nth-child(2n) h3 {
   color: #0F1317;
 }
 /*# sourceMappingURL=style.css.map */
+
+#nav-bar{
+    
+    background-color:#0f1317;
+    text-align:center;
+  
+    font-size: 35px;
+    }
+.container{
+    
+    border:1px solid #bdbdbd;
+}
+
+
+.card-hidden {
+    display:none;
+}
+
