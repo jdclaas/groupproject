@@ -22,9 +22,11 @@
         </div>
 
 
+    <div id="candidateBio">
 
+    </div>
 
-    <div class="card"> 
+    <div class="card-hidden"> 
         
      <div class="card-body">
          
@@ -42,7 +44,7 @@
         </div>
 
         <div class="col-8" class="text-center">
-            <h2 class="candiateName">Candidate Information</h2>
+            <h2 class="candidateName">Candidate Information</h2>
 
             
             <br>
@@ -74,9 +76,52 @@
 </div>
 
 <script>
+$(document).one('click', function(){
 
- $(document).one("click", function(){
+    var candidate = {
+    firstName: "John",
+    lastName: "Doe",
+    gender: "Male",
+    dob: "1/1/1970",
+    placeOfBirth: "Milwaukee, WI",
+    party: "N/A",
+    bio: "Lorem..."
+    };
 
+var bioDiv = $('<div>');
+
+var p1 = $('<p>');
+var p2 = $('<p>');     
+var p3 = $('<p>');
+var p4 = $('<p>');
+var p5 = $('<p>');
+var p6 = $('<p>');
+
+
+  p1.text("Full Name: " + candidate.firstName + " " + candidate.lastName);
+
+  p2.text("Gender: " + candidate.gender);
+
+  p3.text("Date of Birth: " + candidate.dob);
+
+  p4.text("Place of Birth: "+ candidate.placeOfBirth);
+
+  p5.text("Party: " + candidate.party);
+
+  p6.text("Bio: " + candidate.bio);
+
+var candidateImg = $('<img>');
+
+candidateImg.attr('src',"assets/images/Placeholder.png");
+
+  bioDiv.append(p1);
+  bioDiv.append(p2);
+  bioDiv.append(p3);
+  bioDiv.append(p4);
+  bioDiv.append(p5);
+  bioDiv.append(p6);
+
+  bioDiv.addClass("bioDiv");
 
 var candidateImg;
 var firstName;
@@ -147,17 +192,15 @@ return obj;
             console.log(json);
         });
 
-// $(".name").append("Full Name: " + firstName + " " + lastName);
-// $(".gender").append("Gender: " + gender);
-// $(".dob").append("Date of Birth: " + dob);
-// $(".placeOfBirth").append("Place of Birth: " + placeOfBirth);
-// $(".party").append("Party Affiliation: " + party);
-// $(".bio").append("Bio: " + bio);
-
-event.preventDefault();
+  
+  bioDiv.append(candidateImg);
 
 
-});
+$("#candidateBio").append(bioDiv);
+
+}
+);
+
 
 
 
