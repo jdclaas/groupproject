@@ -13,33 +13,30 @@
 </head>
 
 <body>
-  <div class="container">
+<!-- Nav tabs -->
+<nav class="navbar navbar-expand-sm ">
+  
+  <a class="navbar-brand" href="#"><img src="assets/images/2020-LOGO-v2.jpg" alt="logo"></a>
 
-    <div class="row">
-      <div class="col-sm-4">
-        <p>2020</p>
-        <p>know your politicains</p>
-        <p>formulate a choice</p>
-        <p>STAY WOKE</p>
-      </div>
-      <div class="col-sm-8" id="nav-bar">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="/index.html">news</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">politicians</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">events</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">podcasts</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">NEWS <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="#">POLITICIANS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">EVENTS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">PODCASTS</a>
+      </li>
+      
+    </ul>
+
+</nav>
+
 
   <!-- Search Bar -->
   <div class="container">
@@ -50,19 +47,26 @@
       <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
     </div>
   </div>
-</div>
+
 
 
 
   <!-- Drop Down Menu -->
-
-
-
-  <div class="container" id="news-articles">
+  <div id="news-articles">
   </div>
 
 
 
+
+
+
+
+  <script>
+      $('#navId a').click(e => {
+        e.preventDefault();
+        $(this).tab('show');
+      });
+    </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script>

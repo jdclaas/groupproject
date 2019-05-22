@@ -8,20 +8,71 @@ $color-tertiary: #FFFFFF;
     font-family: 'Lato', sans-serif;
 }
 
-#nav-bar{
-    
-    background-color:#0f1317;
-    text-align:center;
- 
-    font-size: 35px;
+.navbar {
+    width: 100%;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    margin: 0;
+    padding: 0;
+    background: $color-primary;
+    height: 196px;
+
+
+    .navbar-brand {
+        padding-top: 0;
+
+        img {
+            height: 196px;
+        }
     }
 
+    .navbar-nav {
+        margin: 1rem 0 1rem 2rem;
+        display: inline-flex;
+
+       
+
+        .active{
+            display: inline-block;
+            background-color:#424343;
+            flex-grow: 1;
+            width:120%;
+
+        
+
+            font-size:27px;
+            margin-left:0;
+
+            font-weight: 700;
+            
+            
+        }
+
+        a {
+            color: $color-tertiary;
+            font-size: 23px;
+            padding: 0;
+            margin-left:1rem;
+
+      
+        }
+
+    }
+}
+
+
 #searcher {
-    margin: 0rem 1.5rem 1rem 1.5rem;
+   margin: 1.5rem 0 1rem 0;
+    width: 100%;
+
+}
+
+.form-control,
+.btn {
+    border-radius: 0;
 }
 
 #news-articles {
-    margin: 0rem 1.5rem 1rem 1.5rem;
+    margin: 0rem 0 1rem 0;
     color: $color-tertiary;
 
 
@@ -44,15 +95,15 @@ $color-tertiary: #FFFFFF;
         margin: 1rem .2rem 1rem .2rem;
         box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 
-        h3{
-            font-weight:900;
+        h3 {
+            font-weight: 900;
         }
 
         .img-area {
             padding: 0;
         }
 
-        .date{
+        .date {
             font-weight: 700;
         }
 
@@ -70,7 +121,7 @@ $color-tertiary: #FFFFFF;
 
 
         p {
-            margin-bottom:0;
+            margin-bottom: 0;
             font-size: .5rem;
         }
     }
