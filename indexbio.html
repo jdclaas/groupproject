@@ -36,7 +36,7 @@
     <div class="row">
         <div class="col-sm-auto">
                 <div class="card" style="width: 18rem;">
-                        <img src="assets/images/Placeholder.png" class="card-img-top" alt="...">
+                        <img class="card-img-top" alt="...">
                         <div class="card-body">
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         </div>
@@ -49,19 +49,18 @@
             
             <br>
 
-            <p class="name"><strong></strong></p>
+            <p class="name"><strong>Name: </strong></p>
 
-            <p class="gender"><strong></strong></p>
+            <p class="gender"><strong>Gender: </strong></p>
 
-            <p class="dob"><strong></strong></p>
+            <p class="dob"><strong>Date of Birth: </strong></p>
 
-            <P class="placeOfBirth"><strong></strong></P>
+            <P class="placeOfBirth"><strong>Place of Birth: </strong></P>
             
-            <p class="party"><strong></strong></p> 
+            <p class="party"><strong>Party: </strong></p> 
 
-            <p class='bio'><strong></strong></p>
-
-            
+            <p class='office'><strong>Current Office: </strong></p>
+           
 
 
         </div>
@@ -76,52 +75,6 @@
 </div>
 
 <script>
-$(document).one('click', function(){
-
-    var candidate = {
-    firstName: "John",
-    lastName: "Doe",
-    gender: "Male",
-    dob: "1/1/1970",
-    placeOfBirth: "Milwaukee, WI",
-    party: "N/A",
-    bio: "Lorem..."
-    };
-
-var bioDiv = $('<div>');
-
-var p1 = $('<p>');
-var p2 = $('<p>');     
-var p3 = $('<p>');
-var p4 = $('<p>');
-var p5 = $('<p>');
-var p6 = $('<p>');
-
-
-  p1.text("Full Name: " + candidate.firstName + " " + candidate.lastName);
-
-  p2.text("Gender: " + candidate.gender);
-
-  p3.text("Date of Birth: " + candidate.dob);
-
-  p4.text("Place of Birth: "+ candidate.placeOfBirth);
-
-  p5.text("Party: " + candidate.party);
-
-  p6.text("Bio: " + candidate.bio);
-
-var candidateImg = $('<img>');
-
-candidateImg.attr('src',"assets/images/Placeholder.png");
-
-  bioDiv.append(p1);
-  bioDiv.append(p2);
-  bioDiv.append(p3);
-  bioDiv.append(p4);
-  bioDiv.append(p5);
-  bioDiv.append(p6);
-
-  bioDiv.addClass("bioDiv");
 
 var candidateImg;
 var firstName;
@@ -130,12 +83,12 @@ var gender;
 var dob;
 var placeOfBirth;
 var party;
-var bio;
+var office;
 var apikey = "a8c2fd7495b5d4f49f009034402bffb1";
 var queryURL;
 // Create the return object
 
-queryURL = "http://api.votesmart.org/CandidateBio.getBio?key="+apikey+"&candidateId=9490";
+queryURL = "http://api.votesmart.org/CandidateBio.getBio?key="+apikey+"&candidateId=120012";
 console.log("XML :" + queryURL);
 
 // Modified version from here: http://davidwalsh.name/convert-xml-json
@@ -189,17 +142,43 @@ return obj;
         method: "GET"
       }).then(function(response) {
             var json = xmlToJson(response);
-            console.log(json);
-        });
+
+
+            console.log(json)
+            
+           lastName = json.bio.candidate.lastName
+           firstName = json.bio.candidate.firstName
+           gender = json.bio.candidate.gender
+           dob = json.bio.candidate.birthDate
+           placeOfBirth = json.bio.candidate.birthPlace
+           party = json.bio.office.parties
+           candidateImg = json.bio.candidate.photo
+           office = json.bio.office.stateId
+           
+        function createBio(event) {
+        $(".card-hidden").removeClass(["card-hidden"]);
+
+        $(".name").append(firstName + " " + lastName);
+        $(".gender").append(gender);
+        $(".dob").append(dob);
+        $(".placeOfBirth").append(placeOfBirth);
+        $(".party").append(party);
+        $(".office").append(office);
+        $(".card-img-top").attr('src', candidateImg);
+
+
+};
+
+$(document).ready(createBio);
+
+
+
+});
 
   
-  bioDiv.append(candidateImg);
 
 
-$("#candidateBio").append(bioDiv);
 
-}
-);
 
 
 
