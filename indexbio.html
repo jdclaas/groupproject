@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel ="stylesheet" href="assets/style.css" type="text/css">
+    <link rel ="stylesheet" href="assets/css/style.css" type="text/css">
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
@@ -15,187 +15,158 @@
 </head>
 <body>
 
-        <div class="container">
-
-                <div class="row">
-                  <div class="col-sm-4">
-                    <p>2020</p>
-                    <p>know your politicians</p>
-                    <p>formulate a choice</p>
-                    <p>STAY WOKE</p>
-                  </div>
-                  <div class="col-sm-8" id="nav-bar">
-                    <ul class="nav flex-column">
-                      <li class="nav-item">
-                        <a class="nav-link active" href="/index.html">News</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="/indexbio.html">Politicians</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Events</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Podcasts</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-
-    <div id="candidateBio">
-
-    </div>
-
-    <div class="card-hidden"> 
-        
-     <div class="card-body">
-         
-        
-    <div class="container">    
-
+<div class="container">
     <div class="row">
+        <div class="col-sm-4">
+        <p>2020</p>
+        <p>know your politicians</p>
+        <p>formulate a choice</p>
+        <p>STAY WOKE</p>
+        </div>
+        <div class="col-sm-8" id="nav-bar">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+            <a class="nav-link active" href="/index.html">News</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/indexbio.html">Politicians</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">Events</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Podcasts</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+    <button id="show-candidates">Candidates</button>
+    <div class="row can-menu" id="menu">
+    </div>
+    <div class="row card-hidden card-body">
         <div class="col-sm-auto">
                 <div class="card" style="width: 18rem;">
                         <img class="card-img-top" alt="...">
                         <div class="card-body">
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         </div>
-                      </div>
+                    </div>
         </div>
-
         <div class="col-8" class="text-center">
             <h2 class="candidateName">Candidate Information</h2>
-
-            
             <br>
-
             <p class="name"><strong>Name: </strong></p>
-
             <p class="gender"><strong>Gender: </strong></p>
-
             <p class="dob"><strong>Date of Birth: </strong></p>
-
-            <P class="placeOfBirth"><strong>Place of Birth: </strong></P>
-            
+            <p class="placeOfBirth"><strong>Place of Birth: </strong></p>
             <p class="party"><strong>Party: </strong></p> 
-
             <p class='office'><strong>Current Office: </strong></p>
-           
-
-
         </div>
-
-     </div>   
-
+    </div>   
+    <div class="row" id="news-articles">
     </div>
-
-    </div>
-    </div>    
-       
 </div>
 
 <script>
 
-var candidateImg;
-var firstName;
-var lastName;
-var gender;
-var dob;
-var placeOfBirth;
-var party;
-var office;
-var apikey = "a8c2fd7495b5d4f49f009034402bffb1";
-var queryURL;
-// Create the return object
+// var candidateImg;
+// var firstName;
+// var lastName;
+// var gender;
+// var dob;
+// var placeOfBirth;
+// var party;
+// var office;
+// var votesSmartKey = "a8c2fd7495b5d4f49f009034402bffb1";
+// var VSQueryURL;
 
-queryURL = "http://api.votesmart.org/CandidateBio.getBio?key="+apikey+"&candidateId=120012";
-console.log("XML :" + queryURL);
+// // Create the return object
+// VSQueryURL = "http://api.votesmart.org/CandidateBio.getBio?key="+votesSmartKey+"&candidateId=120012";
+// console.log("XML :" + VSQueryURL);
 
-// Modified version from here: http://davidwalsh.name/convert-xml-json
-function xmlToJson(xml) {
+// // Modified version from here: http://davidwalsh.name/convert-xml-json
+// function xmlToJson(xml) {
 
-// Create the return object
-var obj = {};
+// // Create the return object
+// var obj = {};
 
-if (xml.nodeType == 1) { // element
-    // do attributes
-    if (xml.attributes.length > 0) {
-    obj["@attributes"] = {};
-        for (var j = 0; j < xml.attributes.length; j++) {
-            var attribute = xml.attributes.item(j);
-            obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
-        }
-    }
-} else if (xml.nodeType == 3) { // text
-    obj = xml.nodeValue;
-}
+// if (xml.nodeType == 1) { // element
+//     // do attributes
+//     if (xml.attributes.length > 0) {
+//     obj["@attributes"] = {};
+//         for (var j = 0; j < xml.attributes.length; j++) {
+//             var attribute = xml.attributes.item(j);
+//             obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+//         }
+//     }
+// } else if (xml.nodeType == 3) { // text
+//     obj = xml.nodeValue;
+// }
 
-// do children
-// If just one text node inside
-if (xml.hasChildNodes() && xml.childNodes.length === 1 && xml.childNodes[0].nodeType === 3) {
-    obj = xml.childNodes[0].nodeValue;
-}
-else if (xml.hasChildNodes()) {
-    for(var i = 0; i < xml.childNodes.length; i++) {
-        var item = xml.childNodes.item(i);
-        var nodeName = item.nodeName;
-        if (typeof(obj[nodeName]) == "undefined") {
-            obj[nodeName] = xmlToJson(item);
-        } else {
-            if (typeof(obj[nodeName].push) == "undefined") {
-                var old = obj[nodeName];
-                obj[nodeName] = [];
-                obj[nodeName].push(old);
-            }
-            obj[nodeName].push(xmlToJson(item));
-        }
-    }
-}
-return obj;
-};
+// // do children
+// // If just one text node inside
+// if (xml.hasChildNodes() && xml.childNodes.length === 1 && xml.childNodes[0].nodeType === 3) {
+//     obj = xml.childNodes[0].nodeValue;
+// }
+// else if (xml.hasChildNodes()) {
+//     for(var i = 0; i < xml.childNodes.length; i++) {
+//         var item = xml.childNodes.item(i);
+//         var nodeName = item.nodeName;
+//         if (typeof(obj[nodeName]) == "undefined") {
+//             obj[nodeName] = xmlToJson(item);
+//         } else {
+//             if (typeof(obj[nodeName].push) == "undefined") {
+//                 var old = obj[nodeName];
+//                 obj[nodeName] = [];
+//                 obj[nodeName].push(old);
+//             }
+//             obj[nodeName].push(xmlToJson(item));
+//         }
+//     }
+// }
+// return obj;
+// };
 
-// xmlToJson();
-// console.log("Object: " + obj);
+// // xmlToJson();
+// // console.log("Object: " + obj);
 
- $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function(response) {
-            var json = xmlToJson(response);
+//  $.ajax({
+//         url: VSQueryURL,
+//         method: "GET"
+//       }).then(function(response) {
+//             var json = xmlToJson(response);
 
 
-            console.log(json)
+//             console.log(json)
             
-           lastName = json.bio.candidate.lastName
-           firstName = json.bio.candidate.firstName
-           gender = json.bio.candidate.gender
-           dob = json.bio.candidate.birthDate
-           placeOfBirth = json.bio.candidate.birthPlace
-           party = json.bio.office.parties
-           candidateImg = json.bio.candidate.photo
-           office = json.bio.office.stateId
+//            lastName = json.bio.candidate.lastName
+//            firstName = json.bio.candidate.firstName
+//            gender = json.bio.candidate.gender
+//            dob = json.bio.candidate.birthDate
+//            placeOfBirth = json.bio.candidate.birthPlace
+//            party = json.bio.office.parties
+//            candidateImg = json.bio.candidate.photo
+//            office = json.bio.office.stateId
            
-        function createBio(event) {
-        $(".card-hidden").removeClass(["card-hidden"]);
+//         function createBio(event) {
+//         $(".card-hidden").removeClass(["card-hidden"]);
 
-        $(".name").append(firstName + " " + lastName);
-        $(".gender").append(gender);
-        $(".dob").append(dob);
-        $(".placeOfBirth").append(placeOfBirth);
-        $(".party").append(party);
-        $(".office").append(office);
-        $(".card-img-top").attr('src', candidateImg);
-
-
-};
-
-$(document).ready(createBio);
+//         $(".name").append(firstName + " " + lastName);
+//         $(".gender").append(gender);
+//         $(".dob").append(dob);
+//         $(".placeOfBirth").append(placeOfBirth);
+//         $(".party").append(party);
+//         $(".office").append(office);
+//         $(".card-img-top").attr('src', candidateImg);
 
 
+// };
 
-});
+// $(document).ready(createBio);
+
+
+
+// });
 
   
 
@@ -210,7 +181,7 @@ $(document).ready(createBio);
 </script>
 
 
-<script src="assets/app.js"></script>
+<script src="assets/js/app.js"></script>
     
 </body>
 </html>
