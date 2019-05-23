@@ -26,34 +26,38 @@ $color-tertiary: #FFFFFF;
     }
 
     .navbar-nav {
-        margin: 1rem 0 1rem 2rem;
+        margin: 0 0 1rem .5rem;
+
         display: inline-flex;
 
-       
 
-        .active{
+
+        .active {
             display: inline-block;
-            background-color:#424343;
+            background-color: #424343;
+            overflow: hidden;
             flex-grow: 1;
-            width:120%;
+           // width: 150%;
 
-        
 
-            font-size:27px;
-            margin-left:0;
+            box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+
+
+            font-size: 27px;
+            margin-left: 0;
 
             font-weight: 700;
-            
-            
+
+
         }
 
         a {
             color: $color-tertiary;
             font-size: 23px;
             padding: 0;
-            margin-left:1rem;
+            margin-left: 1rem;
 
-      
+
         }
 
     }
@@ -61,7 +65,7 @@ $color-tertiary: #FFFFFF;
 
 
 #searcher {
-   margin: 1.5rem 0 1rem 0;
+    margin: 1.5rem 0 1rem 0;
     width: 100%;
 
 }
@@ -133,5 +137,19 @@ $color-tertiary: #FFFFFF;
 
         background-color: $color-secondary;
 
+    }
+}
+
+#politician-area{
+    
+    p{
+        font-size: .75rem;
+        font-weight: 700;
+    }
+
+    img{
+        padding:0;
+        width:100%;
+        box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
     }
 }

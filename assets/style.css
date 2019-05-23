@@ -22,7 +22,7 @@
 }
 
 .navbar .navbar-nav {
-  margin: 1rem 0 1rem 2rem;
+  margin: 0 0 1rem .5rem;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -31,10 +31,12 @@
 .navbar .navbar-nav .active {
   display: inline-block;
   background-color: #424343;
+  overflow: hidden;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  width: 120%;
+  -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
   font-size: 27px;
   margin-left: 0;
   font-weight: 700;
@@ -116,5 +118,17 @@
 
 #news-articles .news-roll:nth-child(2n) h3 {
   color: #0F1317;
+}
+
+#politician-area p {
+  font-size: .75rem;
+  font-weight: 700;
+}
+
+#politician-area img {
+  padding: 0;
+  width: 100%;
+  -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
 }
 /*# sourceMappingURL=style.css.map */
