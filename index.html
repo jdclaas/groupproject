@@ -13,35 +13,44 @@
 </head>
 
 <body>
-  <div class="container">
+  <!-- Nav tabs -->
+  <nav class="navbar navbar-expand-sm ">
 
-    <div class="row">
-      <div class="col-sm-4">
-        <p>2020</p>
-        <p>know your politicians</p>
-        <p>formulate a choice</p>
-        <p>STAY WOKE</p>
+      <a class="navbar-brand" href="#"><img src="assets/images/2020-LOGO-v2.jpg" alt="logo"></a>
+  
+  
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html">NEWS <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="politicians.html">POLITICIANS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">EVENTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">PODCASTS</a>
+        </li>
+  
+      </ul>
+  
+    </nav>
+  
+    <!-- Search Bar -->
+    <div class="container">
+      <div class="input-group mb-3" id="searcher">
+        <input type="text" class="form-control" id="search-bar" placeholder="Search the News..."
+          aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
+        </div>
       </div>
-      <div class="col-sm-8" id="nav-bar">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="/index.html">News</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/indexbio.html">Politicians</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Events</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Podcasts</a>
-          </li>
-        </ul>
+  
+
+      <div id="news-articles">
+        
       </div>
-    </div>
-    <div class="row" id="news-articles">
-    </div>
-</div>
 
 
 
