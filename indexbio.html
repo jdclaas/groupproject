@@ -233,7 +233,6 @@
 
 <script>
 $(document).one('click', function(){
-
     var candidate = {
     firstName: "John",
     lastName: "Doe",
@@ -243,42 +242,28 @@ $(document).one('click', function(){
     party: "N/A",
     bio: "Lorem..."
     };
-
 var bioDiv = $('<div>');
-
 var p1 = $('<p>');
 var p2 = $('<p>');     
 var p3 = $('<p>');
 var p4 = $('<p>');
 var p5 = $('<p>');
 var p6 = $('<p>');
-
-
   p1.text("Full Name: " + candidate.firstName + " " + candidate.lastName);
-
   p2.text("Gender: " + candidate.gender);
-
   p3.text("Date of Birth: " + candidate.dob);
-
   p4.text("Place of Birth: "+ candidate.placeOfBirth);
-
   p5.text("Party: " + candidate.party);
-
   p6.text("Bio: " + candidate.bio);
-
 var candidateImg = $('<img>');
-
 candidateImg.attr('src',"assets/images/Placeholder.png");
-
   bioDiv.append(p1);
   bioDiv.append(p2);
   bioDiv.append(p3);
   bioDiv.append(p4);
   bioDiv.append(p5);
   bioDiv.append(p6);
-
   bioDiv.addClass("bioDiv");
-
 var candidateImg;
 var firstName;
 var lastName;
@@ -290,16 +275,12 @@ var bio;
 var apikey = "a8c2fd7495b5d4f49f009034402bffb1";
 var queryURL;
 // Create the return object
-
 queryURL = "http://api.votesmart.org/CandidateBio.getBio?key="+apikey+"&candidateId=9490";
 console.log("XML :" + queryURL);
-
 // Modified version from here: http://davidwalsh.name/convert-xml-json
 function xmlToJson(xml) {
-
 // Create the return object
 var obj = {};
-
 if (xml.nodeType == 1) { // element
     // do attributes
     if (xml.attributes.length > 0) {
@@ -312,7 +293,6 @@ if (xml.nodeType == 1) { // element
 } else if (xml.nodeType == 3) { // text
     obj = xml.nodeValue;
 }
-
 // do children
 // If just one text node inside
 if (xml.hasChildNodes() && xml.childNodes.length === 1 && xml.childNodes[0].nodeType === 3) {
@@ -336,10 +316,8 @@ else if (xml.hasChildNodes()) {
 }
 return obj;
 };
-
 // xmlToJson();
 // console.log("Object: " + obj);
-
  $.ajax({
         url: queryURL,
         method: "GET"
@@ -347,21 +325,11 @@ return obj;
             var json = xmlToJson(response);
             console.log(json);
         });
-
   
   bioDiv.append(candidateImg);
-
-
 $("#candidateBio").append(bioDiv);
-
 }
 );
-
-
-
-
-
-
 </script>
 
 
