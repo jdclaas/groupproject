@@ -1,93 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Group Project</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel ="stylesheet" href="assets/css/style.css" type="text/css">
 
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+
+    <title>Document</title>
 </head>
-
 <body>
-   <!-- Nav tabs -->
-   <nav class="navbar navbar-expand-sm ">
 
-    <a class="navbar-brand" href="#"><img src="assets/images/2020-LOGO-v2.jpg" alt="logo"></a>
+     <!-- Nav tabs -->
+  <nav class="navbar navbar-expand-sm ">
 
+        <a class="navbar-brand" href="#"><img src="assets/images/2020-LOGO-v2.jpg" alt="logo"></a>
+    
+    
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">NEWS <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="politicians.html">POLITICIANS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">EVENTS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">PODCASTS</a>
+          </li>
+    
+        </ul>
+    
+      </nav>
 
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item">
-        <a class="nav-link active" href="index.html">NEWS <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="politicians.html">POLITICIANS</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">EVENTS</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">PODCASTS</a>
-      </li>
-
-    </ul>
-
-  </nav>
-
+<div class="container">
    
-    <!-- Search Bar -->
-    <div class="container">
-        <div class="input-group mb-3" id="searcher">
-            <input type="text" class="form-control" id="search-bar" placeholder="Find Your Politician"
-                aria-describedby="button-addon2">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
-            </div>
-        </div>
+    <button id="show-candidates">Candidates</button>
+    <div class="row can-menu" id="menu">
     </div>
-
-    <div id="politician-area">
-            <div class="row">
-                <div class="col-4 col-md-3 col-lg-2 poli-img">
-                    <img src="https://votesmart.org/canphoto/120012.jpg" alt="kamala">
-                    <p>Kamala Harris - D</p>
-                </div>
-                <div class="col-4 col-md-3 col-lg-2 poli-img">
-                    <img src="https://votesmart.org/canphoto/15723.jpg" alt="donald">
-                    <p>Donald Trump - R</p>
-                </div>
-                <div class="col-4 col-md-3 col-lg-2 poli-img">
-                    <img src="https://votesmart.org/canphoto/76151.jpg" alt="corey">
-                    <p>Corey Booker - D</p>
-                </div>
-          
-                <div class="col-4 col-md-3 col-lg-2 poli-img">
-                    <img src="https://votesmart.org/canphoto/120012.jpg" alt="kamala">
-                    <p>Kamala Harris - D</p>
-                </div>
-                <div class="col-4 col-md-3 col-lg-2 poli-img">
-                    <img src="https://votesmart.org/canphoto/15723.jpg" alt="donald">
-                    <p>Donald Trump - R</p>
-                </div>
-                <div class="col-4 col-md-3 col-lg-2 poli-img">
-                    <img src="https://votesmart.org/canphoto/76151.jpg" alt="corey">
-                    <p>Corey Booker - D</p>
-                </div>
-            </div>
-    
-    
+    <div class="row card-hidden card-body">
+        <div class="col-sm-auto">
+                <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
         </div>
+        <div class="col-8" class="text-center">
+            <h2 class="candidateName">Candidate Information</h2>
+            <br>
+            <p class="name"><strong>Name: </strong></p>
+            <p class="gender"><strong>Gender: </strong></p>
+            <p class="dob"><strong>Date of Birth: </strong></p>
+            <p class="placeOfBirth"><strong>Place of Birth: </strong></p>
+            <p class="party"><strong>Party: </strong></p> 
+            <p class='office'><strong>Current Office: </strong></p>
+        </div>
+    </div>   
+    <div class="row" id="news-articles">
+    </div>
+</div>
+
+<script>
+
+// var candidateImg;
+// var firstName;
+// var lastName;
+// var gender;
+// var dob;
+// var placeOfBirth;
+// var party;
+// var office;
+// var votesSmartKey = "a8c2fd7495b5d4f49f009034402bffb1";
+// var VSQueryURL;
+
+// // Create the return object
+// VSQueryURL = "http://api.votesmart.org/CandidateBio.getBio?key="+votesSmartKey+"&candidateId=120012";
+// console.log("XML :" + VSQueryURL);
+
+// // Modified version from here: http://davidwalsh.name/convert-xml-json
+// function xmlToJson(xml) {
+
+// // Create the return object
+// var obj = {};
+
+// if (xml.nodeType == 1) { // element
+//     // do attributes
+//     if (xml.attributes.length > 0) {
+//     obj["@attributes"] = {};
+//         for (var j = 0; j < xml.attributes.length; j++) {
+//             var attribute = xml.attributes.item(j);
+//             obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+//         }
+//     }
+// } else if (xml.nodeType == 3) { // text
+//     obj = xml.nodeValue;
+// }
+
+// // do children
+// // If just one text node inside
+// if (xml.hasChildNodes() && xml.childNodes.length === 1 && xml.childNodes[0].nodeType === 3) {
+//     obj = xml.childNodes[0].nodeValue;
+// }
+// else if (xml.hasChildNodes()) {
+//     for(var i = 0; i < xml.childNodes.length; i++) {
+//         var item = xml.childNodes.item(i);
+//         var nodeName = item.nodeName;
+//         if (typeof(obj[nodeName]) == "undefined") {
+//             obj[nodeName] = xmlToJson(item);
+//         } else {
+//             if (typeof(obj[nodeName].push) == "undefined") {
+//                 var old = obj[nodeName];
+//                 obj[nodeName] = [];
+//                 obj[nodeName].push(old);
+//             }
+//             obj[nodeName].push(xmlToJson(item));
+//         }
+//     }
+// }
+// return obj;
+// };
+
+// // xmlToJson();
+// // console.log("Object: " + obj);
+
+//  $.ajax({
+//         url: VSQueryURL,
+//         method: "GET"
+//       }).then(function(response) {
+//             var json = xmlToJson(response);
+
+
+//             console.log(json)
+            
+//            lastName = json.bio.candidate.lastName
+//            firstName = json.bio.candidate.firstName
+//            gender = json.bio.candidate.gender
+//            dob = json.bio.candidate.birthDate
+//            placeOfBirth = json.bio.candidate.birthPlace
+//            party = json.bio.office.parties
+//            candidateImg = json.bio.candidate.photo
+//            office = json.bio.office.stateId
+           
+//         function createBio(event) {
+//         $(".card-hidden").removeClass(["card-hidden"]);
+
+//         $(".name").append(firstName + " " + lastName);
+//         $(".gender").append(gender);
+//         $(".dob").append(dob);
+//         $(".placeOfBirth").append(placeOfBirth);
+//         $(".party").append(party);
+//         $(".office").append(office);
+//         $(".card-img-top").attr('src', candidateImg);
+
+
+// };
+
+// $(document).ready(createBio);
+
+
+
+// });
+
+  
+
+
+
+
+
+
+
+
+
+</script>
+
+
+<script src="assets/js/app.js"></script>
     
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <script src="assets/app.js"></script>
-
 </body>
-
 </html>
