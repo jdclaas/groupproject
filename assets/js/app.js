@@ -303,7 +303,7 @@ $(document).ready(function() {
     // not sure where to put this to hide the card
     // $(".can-menu").addClass(["card-hidden"]);
 
-
+// Something added with merged conflicts here 
     });
 
 
