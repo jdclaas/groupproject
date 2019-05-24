@@ -102,6 +102,19 @@ $(document).ready(function() {
        console.log(candidateObj[2].name)
        console.log(candidateObj[2].id)
 
+    // On click of search button - push search term into candidate variable
+    $('#search-button').on("click", function () {
+        event.preventDefault();
+        console.log("Submit Clicked")
+        candidate = $('#search-bar').val();
+        console.log("Candidate: " + candidate)
+        queryURL = "https://newsapi.org/v2/everything?q=" + candidate + "&apiKey=" + apikey +
+          "&language=en&sources=fox-news,cnn";
+        console.log(queryURL)
+  
+        requestNews(queryURL)
+    });
+
     // function for adding dropbox links
    function requestNews(url) {
        $.ajax({
