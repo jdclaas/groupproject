@@ -18,6 +18,10 @@ $(document).ready(function() {
     var placeOfBirth;
     var party;
     var office;
+    var officeName;
+    var education;
+    var socialMedia;
+    var website;
     var votesSmartKey = "a8c2fd7495b5d4f49f009034402bffb1";
     var VSQueryURL;
 
@@ -192,6 +196,7 @@ $(document).ready(function() {
     // On click of search button - push search term into election variable
     $('body').on("click", ".candidate", function () {
         console.log("Candidate Clicked")
+        candidateId = "";
         candidateId = $(this).attr("id");
         candidate = $(this).attr("name");
         console.log("Candidate: " + candidate + candidateId)
@@ -200,6 +205,14 @@ $(document).ready(function() {
         console.log(candidateQueryURL)
         // Create the return object
     VSQueryURL = "http://api.votesmart.org/CandidateBio.getBio?key="+votesSmartKey+"&candidateId=" + candidateId;
+
+    $(".name").empty();
+    $(".gender").empty();
+    $(".dob").empty();
+    $(".placeOfBirth").empty();
+    $(".party").empty();
+    $(".office").empty();
+    
     
 
     $.ajax({
@@ -216,22 +229,34 @@ $(document).ready(function() {
             gender = json.bio.candidate.gender
             dob = json.bio.candidate.birthDate
             placeOfBirth = json.bio.candidate.birthPlace
-            party = json.bio.office.parties
+            party = json.bio.election.parties
             candidateImg = json.bio.candidate.photo
-            office = json.bio.office.stateId
+
+            if(json.bio.office){
+                officeName = json.bio.office.title
+                office = json.bio.office.stateId
+            }else {
+                officeName = "n/a"
+                office = ""
+            }
+
+            education = json.bio.candidate.education.institution[i]
+            
 
 
             
             function createBio(event) {
             $(".card-hidden").removeClass(["card-hidden"]);
 
-            $(".name").append(firstName + " " + lastName);
-            $(".gender").append(gender);
+            $(".name").append("First Name: "+ firstName + " " + lastName);
+            $(".gender").append("Gender: " + gender);
             $(".dob").append(dob);
-            $(".placeOfBirth").append(placeOfBirth);
-            $(".party").append(party);
-            $(".office").append(office);
+            $(".placeOfBirth").append("Place of Birth: " + placeOfBirth);
+            $(".party").append("Party: " + party);
+            $(".office").append("Office: " + office + " " + officeName);
             $(".card-img-top").attr('src', candidateImg);
+
+            
 
 
     };
