@@ -155,7 +155,7 @@ $(document).ready(function() {
            link.append(headline);
            var snippet = $('<p id="snippet">').text(description);
            var pubDate = $('<p class="date">').text(published);
-
+           moment(pubDate).format(LLLL);
             imgData.append(url);
 
             newsData.append(link);
