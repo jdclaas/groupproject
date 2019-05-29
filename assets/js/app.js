@@ -155,7 +155,7 @@ $(document).ready(function() {
            link.append(headline);
            var snippet = $('<p id="snippet">').text(description);
 
-           var formattedDate= moment(published).format("MMM D YYYY H mm A");
+           var formattedDate= moment(published).format("MMM D YYYY h mm A");
            var pubDate = $('<p class="date">').text(formattedDate);
             // moment().format(DDDD);
             imgData.append(url);
