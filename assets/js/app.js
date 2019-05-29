@@ -157,7 +157,7 @@ $(document).ready(function() {
 
            var formattedDate= moment(published).format("MMM D YYYY h mm A");
            var pubDate = $('<p class="date">').text(formattedDate);
-            // moment().format(DDDD);
+            
             imgData.append(url);
 
             newsData.append(link);
