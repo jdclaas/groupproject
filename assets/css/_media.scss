@@ -1,0 +1,137 @@
+$break-sm: 576px;
+$break-med: 768px;
+$break-large: 992px;
+$break-xlarge: 1200px;
+
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: $break-xlarge) {
+
+    //CSS
+
+}
+
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media ($break-large) and ($break-xlarge) {
+  
+    //CSS
+    
+  }
+  
+  /* 
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+  */
+  
+
+@media (min-width: $break-sm) and (max-width: $break-med){
+    .navbar {
+        height: 100px;
+
+
+        .navbar-brand {
+            padding-bottom: 0;
+            margin-right: 0;
+
+            img {
+                height: 100px;
+            }
+
+            .img-1 {
+                display: block;
+            }
+
+            .img-2 {
+                display: none;
+            }
+        }
+
+        .navbar-nav {
+            margin: 1rem;
+            
+
+            .active {
+
+               
+
+                font-size: 20px;
+            }
+            a{
+                font-size: 20px;
+                
+            }
+
+        }
+        
+    }
+
+    #news-articles .news-roll p {
+        margin-bottom: 0;
+        font-size: .75rem;
+    }
+
+    #news-articles h3 {
+        font-size: 1rem;
+
+    }
+
+
+
+}
+  
+  @media(min-width: 768px){
+
+
+    .navbar {
+        height: 100px;
+
+
+        .navbar-brand {
+            padding-bottom: 0;
+            margin-right: 0;
+
+            img {
+                height: 100px;
+            }
+
+            .img-1 {
+                display: none;
+            }
+
+            .img-2 {
+                display: block;
+            }
+        }
+
+        .navbar-nav {
+            margin: 0;
+
+            .active {
+
+                margin-left: 1rem;
+
+                font-size: 23px;
+            }
+
+        }
+    }
+
+    #news-articles .news-roll p {
+        margin-bottom: 0;
+        font-size: 1rem;
+    }
+
+    #news-articles h3 {
+        font-size: 1.5rem;
+
+    }
+}
