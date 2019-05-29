@@ -208,20 +208,22 @@
   color: #FFFFFF;
   margin: .5rem 0;
   padding: 0;
+  -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 #event-calender .banner .title {
   color: #00BBE2;
   font-weight: 700;
   font-size: .9rem;
-  padding-top: 1rem;
+  padding-top: .5rem;
 }
 
 #event-calender .banner .date {
   font-size: 1.5rem;
   color: #00BBE2;
   font-weight: 700;
-  padding-top: 1rem;
+  padding-top: .5rem;
 }
 
 #event-calender .banner .col-8 {
