@@ -207,7 +207,7 @@ $(document).ready(function () {
         for (var x = 0; x < candidateObj.length; x++) {
             console.log(candidateObj[x].name, candidateObj[x].id);
             var candidateDiv = $('<div>');
-            candidateDiv.attr("class", "col-md-3 col-4 candidate")
+            candidateDiv.attr("class", "col-md-3 col-4 col-lg-3 candidate")
 
             candidateId = candidateObj[x].id
             candidateDiv.attr("id", candidateId);
@@ -295,12 +295,12 @@ $(document).ready(function () {
             function createBio(event) {
                 
 
-                $(".name").append("First Name: " + firstName + " " + lastName);
-                $(".gender").append("Gender: " + gender);
-                $(".dob").append("Date of Birth: " + dob);
-                $(".placeOfBirth").append("Place of Birth: " + placeOfBirth);
-                $(".party").append("Party: " + party);
-                $(".office").append("Office: " + office + " " + officeName);
+                $(".name").append(firstName + " " + lastName);
+                $(".gender").append(gender);
+                $(".dob").append(dob);
+                $(".placeOfBirth").append(placeOfBirth);
+                $(".party").append(party);
+                $(".office").append(office + " " + officeName);
                 $(".pol-img").attr('src', candidateImg);
 
 
