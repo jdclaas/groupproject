@@ -1,226 +1,137 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-    <link rel ="stylesheet" href="assets/css/style.css" type="text/css">
-
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 
-    <title>Document</title>
+  <title>Document</title>
 </head>
+
 <body>
 
-     <!-- Nav tabs -->
+  <!-- Nav tabs -->
   <nav class="navbar navbar-expand-sm ">
 
-        <a class="navbar-brand" href="#"><img src="assets/images/2020-LOGO-v2.jpg" alt="logo"></a>
-    
-    
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" href="index.html">NEWS <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="politicians.html">POLITICIANS</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">EVENTS</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">PODCASTS</a>
-          </li>
-    
-        </ul>
-    
-      </nav>
+    <a class="navbar-brand" href="#"><img src="assets/images/2020-LOGO-v2.jpg" alt="logo"></a>
 
-<div class="container">
-   
-    <button id="show-candidates">Candidates</button>
+
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">NEWS <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="politicians.html">POLITICIANS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">EVENTS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">PODCASTS</a>
+      </li>
+
+    </ul>
+
+  </nav>
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <h5 class="modal-title name" id="pol-header">Name</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="politician-area">
+
+
+
+          <div class="row">
+            <div class="col-5">
+
+              <img src="assets/images/Placeholder.png" class="pol-img">
+
+
+            </div>
+
+            <div class="col-7 bio-area">
+
+              <p>PARTY: <span class="party"></span> </p>
+
+              <p>OFFICE: <span class='office'></span> </p>
+
+              <p>GENDER: <span class="gender"></span> </p>
+
+              <p>DOB: <span class="dob"></span> </p>
+
+              <p>BIRTHPLACE: <span class="placeOfBirth"></span> </p>
+
+
+
+              <p>SOCIAL MEDIA</p>
+              <a href="#"><i class="fab fa-facebook-square" aria-hidden="true"></i> </a>
+              <a href="#"><i class="fab fa-instagram"></i> </a>
+              <a href="#"><i class="fas fa-envelope-square"></i> </a>
+              <a href="#"><i class="fab fa-twitter-square"></i></a>
+            </div>
+
+
+          </div>
+
+          <div class="row">
+            <div class="col-12 modal-header news-header">
+              <h5>LATEST NEWS</h5>
+            </div>
+          </div>
+
+          <div class="row" id="news-articles">
+          </div>
+
+        </div>
+
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container" id="politician-menu">
+
+
     <div class="row can-menu" id="menu">
     </div>
-    <div class="row card-hidden card-body">
-
-    <div id="candidateBio">
-
-    </div>
-
-    <div class="card-hidden"> 
-        
-     <div class="card-body">
-         
-        
-    <div class="container">    
-
-    <div class="row">
-      
-        <div class="col-sm-auto">
-                <div class="card" style="width: 18rem;">
-                        <img src="assets/images/Placeholder.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-<<<<<<< HEAD
-=======
-                        <p class="card-text">Candidate Photo</p>
->>>>>>> 52cfead46f2578d02bdacda65e619d2443efc85b
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                      </div>
-        </div>
 
 
 
-        <div class="col-8" class="text-center">
-            <h2 class="candidateName">Candidate Information</h2>
-
-            
-            <br>
-
-            <p class="name"><strong></strong></p>
-
-            <p class="gender"><strong></strong></p>
-
-            <p class="dob"><strong></strong></p>
-
-            <P class="placeOfBirth"><strong></strong></P>
-            
-            <p class="party"><strong></strong></p> 
-
-<<<<<<< HEAD
-            <p class='office'><strong></strong></p>
-=======
-            <p class='bio'><strong></strong></p>
->>>>>>> 52cfead46f2578d02bdacda65e619d2443efc85b
-
-            
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
 
 
-        </div>
 
-     </div>   
+    <script src="assets/js/app.js"></script>
 
-    </div>
-
-    </div>
-    <div class="row" id="news-articles">
-    </div>    
-       
-</div>
-
-<script>
-// $(document).one('click', function(){
-//     var candidate = {
-//     firstName: "John",
-//     lastName: "Doe",
-//     gender: "Male",
-//     dob: "1/1/1970",
-//     placeOfBirth: "Milwaukee, WI",
-//     party: "N/A",
-//     bio: "Lorem..."
-//     };
-// var bioDiv = $('<div>');
-// var p1 = $('<p>');
-// var p2 = $('<p>');     
-// var p3 = $('<p>');
-// var p4 = $('<p>');
-// var p5 = $('<p>');
-// var p6 = $('<p>');
-//   p1.text("Full Name: " + candidate.firstName + " " + candidate.lastName);
-//   p2.text("Gender: " + candidate.gender);
-//   p3.text("Date of Birth: " + candidate.dob);
-//   p4.text("Place of Birth: "+ candidate.placeOfBirth);
-//   p5.text("Party: " + candidate.party);
-//   p6.text("Bio: " + candidate.bio);
-// var candidateImg = $('<img>');
-// candidateImg.attr('src',"assets/images/Placeholder.png");
-//   bioDiv.append(p1);
-//   bioDiv.append(p2);
-//   bioDiv.append(p3);
-//   bioDiv.append(p4);
-//   bioDiv.append(p5);
-//   bioDiv.append(p6);
-//   bioDiv.addClass("bioDiv");
-// var candidateImg;
-// var firstName;
-// var lastName;
-// var gender;
-// var dob;
-// var placeOfBirth;
-// var party;
-// var bio;
-// var apikey = "a8c2fd7495b5d4f49f009034402bffb1";
-// var queryURL;
-// // Create the return object
-// queryURL = "http://api.votesmart.org/CandidateBio.getBio?key="+apikey+"&candidateId=9490";
-// console.log("XML :" + queryURL);
-// // Modified version from here: http://davidwalsh.name/convert-xml-json
-// function xmlToJson(xml) {
-// // Create the return object
-// var obj = {};
-// if (xml.nodeType == 1) { // element
-//     // do attributes
-//     if (xml.attributes.length > 0) {
-//     obj["@attributes"] = {};
-//         for (var j = 0; j < xml.attributes.length; j++) {
-//             var attribute = xml.attributes.item(j);
-//             obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
-//         }
-//     }
-// } else if (xml.nodeType == 3) { // text
-//     obj = xml.nodeValue;
-// }
-// // do children
-// // If just one text node inside
-// if (xml.hasChildNodes() && xml.childNodes.length === 1 && xml.childNodes[0].nodeType === 3) {
-//     obj = xml.childNodes[0].nodeValue;
-// }
-// else if (xml.hasChildNodes()) {
-//     for(var i = 0; i < xml.childNodes.length; i++) {
-//         var item = xml.childNodes.item(i);
-//         var nodeName = item.nodeName;
-//         if (typeof(obj[nodeName]) == "undefined") {
-//             obj[nodeName] = xmlToJson(item);
-//         } else {
-//             if (typeof(obj[nodeName].push) == "undefined") {
-//                 var old = obj[nodeName];
-//                 obj[nodeName] = [];
-//                 obj[nodeName].push(old);
-//             }
-//             obj[nodeName].push(xmlToJson(item));
-//         }
-//     }
-// }
-// return obj;
-// };
-// // xmlToJson();
-// // console.log("Object: " + obj);
-//  $.ajax({
-//         url: queryURL,
-//         method: "GET"
-//       }).then(function(response) {
-//             var json = xmlToJson(response);
-//             console.log(json);
-//         });
-  
-//   bioDiv.append(candidateImg);
-// $("#candidateBio").append(bioDiv);
-// }
-// );
-// </script>
-
-
-<script src="assets/js/app.js"></script>
-    
 </body>
+
 </html>
-
-
-
