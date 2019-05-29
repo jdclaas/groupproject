@@ -154,8 +154,10 @@ $(document).ready(function() {
            link.attr("href", articleURL);
            link.append(headline);
            var snippet = $('<p id="snippet">').text(description);
-           var pubDate = $('<p class="date">').text(published);
-           moment(pubDate).format(LLLL);
+
+           var formattedDate= moment(published).format("MMM D YYYY H mm A");
+           var pubDate = $('<p class="date">').text(formattedDate);
+            // moment().format(DDDD);
             imgData.append(url);
 
             newsData.append(link);
