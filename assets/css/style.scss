@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap');
 
+
+
 $color-primary: #0F1317;
 $color-secondary: #00BBE2;
 $color-tertiary: #FFFFFF;
 
 * {
     font-family: 'Lato', sans-serif;
+    
 }
+
 
 .navbar {
     width: 100%;
@@ -21,8 +25,18 @@ $color-tertiary: #FFFFFF;
         padding-top: 0;
 
         img {
-            height: 196px;
-        }
+            height: 196px;   
+
+     }
+
+
+     .img-2{
+        display: none;
+    }
+
+    .img-1{
+        display:block;
+    }
     }
 
     .navbar-nav {
@@ -35,7 +49,7 @@ $color-tertiary: #FFFFFF;
         .active {
             display: inline-block;
             background-color: #424343;
-            overflow: hidden;
+           
             flex-grow: 1;
            // width: 150%;
 
@@ -215,3 +229,4 @@ $color-tertiary: #FFFFFF;
 
 }
 
+@import 'media';
