@@ -190,6 +190,54 @@
   margin-top: 1rem;
 }
 
+#event-calender {
+  margin-top: 1rem;
+}
+
+#event-calender .event-header {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#event-calender .banner {
+  background: #0F1317;
+  color: #FFFFFF;
+  margin: .5rem 0;
+  padding: 0;
+  -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#event-calender .banner .title {
+  color: #00BBE2;
+  font-weight: 700;
+  font-size: .9rem;
+  padding-top: .5rem;
+}
+
+#event-calender .banner .date {
+  font-size: 1.5rem;
+  color: #00BBE2;
+  font-weight: 700;
+  padding-top: .5rem;
+}
+
+#event-calender .banner .col-8 {
+  padding: 0 .5rem 0 0;
+}
+
+#event-calender .banner p {
+  font-size: .5rem;
+}
+
+#event-calender .banner br {
+  margin: 0;
+}
+
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
