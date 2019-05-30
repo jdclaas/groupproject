@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     // News API Variables
-    var apikey = "b0ea2322bfc0471a987b7f4ecef6a106"
+    var apikey = "5a3ba875603a48dc9469e6852a05d8be"
     var articleNum = 5;
     var election = 2020;
     var candidate;
@@ -141,18 +141,27 @@ $(document).ready(function () {
         console.log(queryURL)
 
         requestNews(queryURL)
-        if (candidate !== "[A-z]{2}[0-9]{4}" ) 
-        { 
-            alert("Please enter your name."); 
-            return false;
+       
+    
+        for (i = 0, len = candidate.length; i < len; i++) {
+            code = candidate.charCodeAt(i);
+            if (!(code > 47 && code < 58) && // numeric (0-9)
+                !(code > 64 && code < 91) && // upper alpha (A-Z)
+                !(code > 96 && code < 123)) { // lower alpha (a-z)
+              alert("PLease only use numbers and letters"); 
+              return false;
+            }
+          }
+          return true;
+       
+    });
+    
             
-    }}
             
-            
-    );
 
 
-        
+
+   
 
 
     // function for adding dropbox links
