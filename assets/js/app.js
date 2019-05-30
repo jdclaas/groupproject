@@ -22,6 +22,8 @@ $(document).ready(function () {
     var votesSmartKey = "a8c2fd7495b5d4f49f009034402bffb1";
     var VSQueryURL;
 
+  
+
     // Candidates Menu Variables
     var candidateObj = [{
             name: "Donald Trump",
