@@ -142,24 +142,39 @@ $(document).ready(function () {
 
         requestNews(queryURL)
        
-    
+    // Validating Search Bar 
         for (i = 0, len = candidate.length; i < len; i++) {
             code = candidate.charCodeAt(i);
             if (!(code > 47 && code < 58) && // numeric (0-9)
                 !(code > 64 && code < 91) && // upper alpha (A-Z)
                 !(code > 96 && code < 123)) { // lower alpha (a-z)
-              alert("PLease only use numbers and letters"); 
-              return false;
-            }
-          }
+              alert("Please only use numbers and letters");
+        //       (document.getElementById(responddivid).style.display=="none")
+        //       {
+        //         document.getElementById(responddivid).style.display="inline";
+        //       return false;
+        //     }
+        //   }
+        //   alertBar.style.display = 'none';
           return true;
        
-    });
+        };
     
+    function showresponddiv(messagedivid){
+        code
+        if (document.getElementById(responddivid).style.display=="none"){
+            document.getElementById(responddivid).style.display="inline";
+        } else {
+            document.getElementById(responddivid).style.display="none";
+        }
+    };
             
             
 
-
+//     document.getElementById('north').style.display = 'block'; 
+// }else {
+//     document.getElementById('south').style.display = 'none'; 
+// }
 
    
 
