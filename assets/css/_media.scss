@@ -11,7 +11,32 @@ $break-xlarge: 1200px;
 
 @media (min-width: $break-xlarge) {
 
-    //CSS
+    
+    #event-calender {
+        .banner {
+            height: 200px;
+            
+
+
+            .date {
+                font-size: 3rem;
+                vertical-align: middle;
+                padding-top:3rem;
+            }
+
+
+            .title {
+                font-size: 1.25rem;
+                padding-top:1rem;
+            }
+
+            p{
+                font-size:1rem;
+            }
+
+
+        }
+    }
 
 }
 
@@ -21,19 +46,42 @@ $break-xlarge: 1200px;
   ##Screen = B/w 1025px to 1280px
 */
 
-@media ($break-large) and ($break-xlarge) {
-  
+@media (min-width: $break-med) and (max-width: $break-xlarge) {
+
     //CSS
-    
-  }
-  
-  /* 
+    #event-calender {
+        .banner {
+            height: 200px;
+
+
+            .date {
+                padding-top:50px;
+                font-size: 2rem;
+            }
+
+
+            .title {
+                font-size: 1rem;
+                padding-top:2rem;
+            }
+
+            p{
+                font-size:.75rem;
+            }
+
+
+        }
+    }
+
+}
+
+/* 
     ##Device = Tablets, Ipads (portrait)
     ##Screen = B/w 768px to 1024px
   */
-  
 
-@media (min-width: $break-sm) and (max-width: $break-med){
+
+@media (min-width: $break-sm) and (max-width: $break-med) {
     .navbar {
         height: 100px;
 
@@ -57,21 +105,24 @@ $break-xlarge: 1200px;
 
         .navbar-nav {
             margin: 1rem;
-            
+
 
             .active {
 
-               
+
 
                 font-size: 20px;
             }
-            a{
+
+            a {
                 font-size: 20px;
-                
+
             }
 
         }
-        
+
+
+
     }
 
     #news-articles .news-roll p {
@@ -87,8 +138,8 @@ $break-xlarge: 1200px;
 
 
 }
-  
-  @media(min-width: 768px){
+
+@media(min-width: 768px) {
 
 
     .navbar {
@@ -134,4 +185,7 @@ $break-xlarge: 1200px;
         font-size: 1.5rem;
 
     }
+
+
+
 }
