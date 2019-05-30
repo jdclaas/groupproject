@@ -59,25 +59,12 @@ $color-tertiary: #FFFFFF;
 
         .active {
             
-            width:100%;
-            background-color: #424343;
-           
-           
+            color:$color-secondary;
+            text-decoration: underline;
            
            // width: 150%;
-           
-
-
             box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
-            
-
-
-
-            font-size: 23px;
-           
-
-            font-weight: 700;
-
+            font-weight: 900;
 
         }
 
@@ -86,7 +73,7 @@ $color-tertiary: #FFFFFF;
 }
 
 #searcher {
-    margin: 1.5rem 0 1rem 0;
+    margin: 1rem 0 1rem 0;
     width: 100%;
 
 }
@@ -94,6 +81,7 @@ $color-tertiary: #FFFFFF;
 .form-control,
 .btn {
     border-radius: 0;
+
 }
 
 #news-articles {
@@ -167,12 +155,36 @@ $color-tertiary: #FFFFFF;
 
 #politician-menu{
     padding-top:1rem;
+
+    
+
+    margin:auto;
+
+    .candidate{
+        cursor: pointer;
+        margin: .5rem 0;
+       
+        img{
+            width:100%;
+        }
+    }
+
+    .btn{
+        background-color:$color-secondary;
+        color:$color-tertiary;
+        text-align: center;
+        margin-top:.5rem;
+        width:100%;
+
+    
+    }
 }
 
 
 
 .modal-content,.modal-header{
     border-radius:0;
+    border:none;
 }
 
 .modal-header{
@@ -190,8 +202,16 @@ $color-tertiary: #FFFFFF;
     }
 }
 
+.modal-footer{
+    .form-control, .btn{
+    background-color:$color-primary;
+    color:$color-tertiary;
 
+    }
+}
 #politician-area{
+
+
 
     .heading{
         margin-top:1rem;
@@ -233,18 +253,26 @@ $color-tertiary: #FFFFFF;
         margin-top:1rem;
     }
 
+
     
 
 }
 
+
+
 .heading{
 
-    margin:1rem 0;
+    margin:.75rem;
     background:$color-primary;
     color:$color-tertiary;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+
     
     h1{
-        font-size: 2rem;
+        font-size: 1.5rem;
+        padding:.75rem;
+        margin:0;
+
     }
     
 }
@@ -316,6 +344,18 @@ $color-tertiary: #FFFFFF;
  
 
     }
+
+}
+
+footer {
+
+    background:$color-primary;
+    color:$color-secondary;
+    font-weight: bold;
+    text-align: center;
+
+
+
 
 }
 

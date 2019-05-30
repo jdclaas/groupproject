@@ -9,6 +9,31 @@ $break-xlarge: 1200px;
   ##Screen = 1281px to higher resolution desktops
 */
 
+@media (max-width: $break-sm){
+
+    #politician-menu{
+        .btn{
+            font-size:.5rem;
+        }
+    }
+
+
+    .heading{
+
+        margin:.5rem .25rem 0 .25rem;
+       
+        
+
+        h1{
+            font-size: 1rem;
+            padding:1rem 0;
+    
+        }
+        
+    }
+
+}
+
 @media (min-width: $break-xlarge) {
 
     
@@ -36,6 +61,21 @@ $break-xlarge: 1200px;
 
 
         }
+    }
+
+    .heading{
+
+        margin:1rem 3rem;
+        
+
+    
+        
+        h1{
+            font-size: 2rem;
+            padding:1rem;
+    
+        }
+        
     }
 
 }
@@ -72,6 +112,22 @@ $break-xlarge: 1200px;
 
         }
     }
+
+    .heading{
+
+        margin:1rem 3rem;
+        
+
+    
+        
+        h1{
+            font-size: 1.5rem;
+            padding:1rem;
+    
+        }
+        
+    }
+
 
 }
 
