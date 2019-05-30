@@ -182,10 +182,12 @@ $(document).ready(function () {
         $(".party").append(party);
         $(".office").append(office + " " + officeName);
         $(".pol-img").attr('src', candidateImg);
+
         for ( var i = 0; i < educationArray.length; i++) {
 
             var space = $('<br>');
-            $(".education").append(educationArray[i].degree + " " + educationArray[i].school + " " + educationArray[i].span)
+            
+            $(".education").append(educationArray[i].degree + " - " + educationArray[i].school + " " + educationArray[i].span)
             $('.education').append(space)
         }
 
@@ -217,9 +219,12 @@ $(document).ready(function () {
 
                 var articleImg = $('<img class="news-img">');
                 var imgData = $('<div class="img-area col-4">');
-                articleImg.attr("src", mainImg);
+                articleImg.attr({"src": mainImg,
+                target: "_blank" });
+
                 var url = $('<a>');
-                url.attr("href", articleURL);
+                url.attr({"href": articleURL,
+                target: "_blank"});
                 url.append(articleImg);
 
 
