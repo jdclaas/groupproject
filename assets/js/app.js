@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     // News API Variables
-    var apikey = "b0ea2322bfc0471a987b7f4ecef6a106"
+    var apikey = "5a3ba875603a48dc9469e6852a05d8be"
     var articleNum = 5;
     var election = 2020;
     var candidate;
