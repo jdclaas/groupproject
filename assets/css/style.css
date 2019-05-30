@@ -194,7 +194,16 @@
   margin-top: 1rem;
 }
 
+#event-calender .row {
+  margin: 0;
+}
+
+#event-calender .col-12 {
+  padding: 0;
+}
+
 #event-calender .event-header {
+  padding: 0;
   width: 100%;
   height: 200px;
   -o-object-fit: cover;
@@ -206,10 +215,11 @@
 #event-calender .banner {
   background: #0F1317;
   color: #FFFFFF;
-  margin: .5rem 0;
-  padding: 0;
+  margin: 0 0 1rem 0;
   -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
           box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 0;
+  width: 100%;
 }
 
 #event-calender .banner .title {
@@ -242,10 +252,45 @@
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
 */
+@media (min-width: 1200px) {
+  #event-calender .banner {
+    height: 200px;
+  }
+  #event-calender .banner .date {
+    font-size: 3rem;
+    vertical-align: middle;
+    padding-top: 3rem;
+  }
+  #event-calender .banner .title {
+    font-size: 1.25rem;
+    padding-top: 1rem;
+  }
+  #event-calender .banner p {
+    font-size: 1rem;
+  }
+}
+
 /* 
   ##Device = Laptops, Desktops
   ##Screen = B/w 1025px to 1280px
 */
+@media (min-width: 768px) and (max-width: 1200px) {
+  #event-calender .banner {
+    height: 200px;
+  }
+  #event-calender .banner .date {
+    padding-top: 50px;
+    font-size: 2rem;
+  }
+  #event-calender .banner .title {
+    font-size: 1rem;
+    padding-top: 2rem;
+  }
+  #event-calender .banner p {
+    font-size: .75rem;
+  }
+}
+
 /* 
     ##Device = Tablets, Ipads (portrait)
     ##Screen = B/w 768px to 1024px
