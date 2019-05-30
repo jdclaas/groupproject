@@ -9,6 +9,7 @@ $(document).ready(function () {
     var queryURL;
     var candidateQueryURL;
 
+
     // VoteSmart API Variables
     var candidateImg;
     var firstName;
@@ -193,7 +194,8 @@ $(document).ready(function () {
                 link.attr("href", articleURL);
                 link.append(headline);
                 var snippet = $('<p id="snippet">').text(description);
-                var pubDate = $('<p class="date">').text(published);
+                var formattedDate= moment(published).format("MMM D YYYY h:mm A");
+                var pubDate = $('<p class="date">').text(formattedDate);
 
                 imgData.append(url);
 
@@ -220,6 +222,11 @@ $(document).ready(function () {
             console.log(candidateObj[x].name, candidateObj[x].id);
             var candidateDiv = $('<div>');
             candidateDiv.attr("class", "col-md-3 col-4 col-lg-3 candidate")
+            candidateDiv.attr({
+            "data-toggle": "modal",
+            "data-target": "#exampleModal",
+            "data-whatever": "@getbootstrap"
+        });
 
             candidateId = candidateObj[x].id
             candidateDiv.attr("id", candidateId);
@@ -233,9 +240,6 @@ $(document).ready(function () {
             candidateName.attr({
                 type: "button",
                 class: "btn",
-                "data-toggle": "modal",
-                "data-target": "#exampleModal",
-                "data-whatever": "@getbootstrap"
     
             });
             candidateName.text(candidateNameText);
