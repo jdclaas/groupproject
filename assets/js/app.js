@@ -140,7 +140,19 @@ $(document).ready(function () {
         console.log(queryURL)
 
         requestNews(queryURL)
-    });
+        if (candidate !== "[A-z]{2}[0-9]{4}" ) 
+        { 
+            alert("Please enter your name."); 
+            return false;
+            
+    }}
+            
+            
+    );
+
+
+        
+
 
     // function for adding dropbox links
     function requestNews(url) {
