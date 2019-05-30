@@ -27,6 +27,8 @@ $(document).ready(function () {
 
 
 
+  
+
     // Candidates Menu Variables
     var candidateObj = [{
             name: "Donald Trump",
@@ -145,15 +147,23 @@ $(document).ready(function () {
         console.log(queryURL)
 
         requestNews(queryURL)
-        if (candidate !== "[A-z]{2}[0-9]{4}" ) 
-        { 
-            alert("Please enter your name."); 
-            return false;
+       
+    
+        for (i = 0, len = candidate.length; i < len; i++) {
+            code = candidate.charCodeAt(i);
+            if (!(code > 47 && code < 58) && // numeric (0-9)
+                !(code > 64 && code < 91) && // upper alpha (A-Z)
+                !(code > 96 && code < 123)) { // lower alpha (a-z)
+              alert("PLease only use numbers and letters"); 
+              return false;
+            }
+          }
+          return true;
+       
+    });
+    
             
-    }}
             
-            
-    );
 
     function createBio(event) {
         $(".name").empty();
