@@ -231,9 +231,17 @@ $color-tertiary: #FFFFFF;
 
 
 #event-calender{
+    .row{
+        margin:0;
+    }
+
+    .col-12{
+        padding:0;
+    }
+
     margin-top:1rem;
     .event-header{
-        
+        padding:0;
         width:100%;
         height:200px;
         object-fit: cover;
@@ -246,10 +254,15 @@ $color-tertiary: #FFFFFF;
         background: $color-primary;
         color:$color-tertiary;
        
-        margin:.5rem 0;
-        padding:0;
+        margin: 0 0 1rem 0;
+       
         box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+        padding:0;
 
+        
+        width:100%;
+
+     
         .title{ 
             color: $color-secondary;
             font-weight:700;
@@ -261,9 +274,8 @@ $color-tertiary: #FFFFFF;
             font-size:1.5rem;
             color: $color-secondary;
             font-weight:700;
-
             padding-top:.5rem;
-      
+
       
         }
         .col-8{
