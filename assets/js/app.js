@@ -142,51 +142,31 @@ $(document).ready(function () {
 
         requestNews(queryURL)
        
-    // Validating Search Bar 
+    
         for (i = 0, len = candidate.length; i < len; i++) {
             code = candidate.charCodeAt(i);
             if (!(code > 47 && code < 58) && // numeric (0-9)
                 !(code > 64 && code < 91) && // upper alpha (A-Z)
-                !(code > 96 && code < 123)) { // lower alpha (a-z)
-              alert("Please only use numbers and letters");
-        //       (document.getElementById(responddivid).style.display=="none")
-        //       {
-        //         document.getElementById(responddivid).style.display="inline";
-        //       return false;
-        //     }
-        //   }
-        //   alertBar.style.display = 'none';
+                !(code > 96 && code < 123)) { // lower alpha (a-z)      
+                return false;
+            }
+          }
           return true;
-       
-        };
+    });
     
-    function showresponddiv(messagedivid){
-        code
-        if (document.getElementById(responddivid).style.display=="none"){
-            document.getElementById(responddivid).style.display="inline";
-        } else {
-            document.getElementById(responddivid).style.display="none";
-        }
-    };
-            
-            
-
-//     document.getElementById('north').style.display = 'block'; 
-// }else {
-//     document.getElementById('south').style.display = 'none'; 
-// }
-
-   
-
-
     // function for adding dropbox links
     function requestNews(url) {
         $.ajax({
             url: url,
             method: "GET"
         }).then(function (response) {
+            if (response.totalResults == 0) {
+                $("#alert").text("Nothing found, search again")
+                return
+            }
+            $("#alert").text("")
             $('#news-articles').empty()
-
+console.log("hello", response)
             // Loop to bring back articles
 
             for (i = 0; i < articleNum; i++) {
@@ -235,9 +215,10 @@ $(document).ready(function () {
 
             }
 
-        });
-
+            }).catch(function(err){console.log(err)});
+      
     };
+
 
     // Make Candidate Menu
     function makeCandidate() {
