@@ -210,6 +210,11 @@ $(document).ready(function () {
             console.log(candidateObj[x].name, candidateObj[x].id);
             var candidateDiv = $('<div>');
             candidateDiv.attr("class", "col-md-3 col-4 col-lg-3 candidate")
+            candidateDiv.attr({
+            "data-toggle": "modal",
+            "data-target": "#exampleModal",
+            "data-whatever": "@getbootstrap"
+        });
 
             candidateId = candidateObj[x].id
             candidateDiv.attr("id", candidateId);
@@ -223,9 +228,6 @@ $(document).ready(function () {
             candidateName.attr({
                 type: "button",
                 class: "btn",
-                "data-toggle": "modal",
-                "data-target": "#exampleModal",
-                "data-whatever": "@getbootstrap"
     
             });
             candidateName.text(candidateNameText);
