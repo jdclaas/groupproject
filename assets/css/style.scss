@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap');
 
 
@@ -9,7 +8,7 @@ $color-tertiary: #FFFFFF;
 
 * {
     font-family: 'Lato', sans-serif;
-    
+
 }
 
 
@@ -26,18 +25,15 @@ $color-tertiary: #FFFFFF;
         padding-top: 0;
 
         img {
-            height: 196px;   
+            height: 196px;
 
-     }
-
-
-     .img-2{
-        display: none;
-    }
-
-    .img-1{
-        display:block;
-    }
+        }
+        .img-2 {
+            display: none;
+        }
+        .img-1 {
+            display: block;
+        }
     }
 
     .navbar-nav {
@@ -45,30 +41,21 @@ $color-tertiary: #FFFFFF;
 
         display: inline-flex;
 
-
-
-        
         a {
             color: $color-tertiary;
             font-size: 23px;
             padding: 0;
             margin-left: 1rem;
-
-
         }
 
         .active {
-            
-            color:$color-secondary;
+            color: $color-secondary;
             text-decoration: underline;
-           
-           // width: 150%;
+
+            // width: 150%;
             box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
             font-weight: 900;
-
         }
-
-
     }
 }
 
@@ -153,195 +140,207 @@ $color-tertiary: #FFFFFF;
 
 
 
-#politician-menu{
-    padding-top:1rem;
+#politician-menu {
+    padding-top: 1rem;
 
-    
 
-    margin:auto;
 
-    .candidate{
+    margin: auto;
+
+    .candidate {
         cursor: pointer;
         margin: .5rem 0;
-       
-        img{
-            width:100%;
+
+        img {
+            width: 100%;
         }
     }
 
-    .btn{
-        background-color:$color-secondary;
-        color:$color-tertiary;
+    .btn {
+        background-color: $color-secondary;
+        color: $color-tertiary;
         text-align: center;
-        margin-top:.5rem;
-        width:100%;
+        margin-top: .5rem;
+        width: 100%;
 
-    
+
     }
 }
 
 
 
-.modal-content,.modal-header{
-    border-radius:0;
-    border:none;
+.modal-content,
+.modal-header {
+    border-radius: 0;
+    border: none;
 }
 
-.modal-header{
-    background:$color-primary;
-    color:$color-tertiary;
-    span{
-        color:$color-tertiary;
+.modal-header {
+    background: $color-primary;
+    color: $color-tertiary;
+
+    span {
+        color: $color-tertiary;
         text-shadow: none;
     }
-    .close{
+
+    .close {
         opacity: 1;
     }
-    .modal-title{
-        text-transform:uppercase;
+
+    .modal-title {
+        text-transform: uppercase;
     }
 }
 
-.modal-footer{
-    .form-control, .btn{
-    background-color:$color-primary;
-    color:$color-tertiary;
+.modal-footer {
+
+    .form-control,
+    .btn {
+        background-color: $color-primary;
+        color: $color-tertiary;
 
     }
 }
-#politician-area{
+
+#politician-area {
 
 
 
-    .heading{
-        margin-top:1rem;
-        background:$color-primary;
-        color:$color-tertiary;
+    .heading {
+        margin-top: 1rem;
+        background: $color-primary;
+        color: $color-tertiary;
     }
 
 
-    .pol-img{
+    .pol-img {
 
         width: 100%;
-        
+
         object-fit: cover;
 
     }
-    .bio-area{
-        padding:0;
+
+    .bio-area {
+        padding: 0;
     }
 
-    p{
+    p {
         font-weight: 700;
         margin: 0;
         font-size: .75rem;
 
-        span{
-            font-weight:400;
+        span {
+            font-weight: 400;
         }
     }
 
-    i{
-        font-size:2rem;
+    i {
+        font-size: 2rem;
         text-align: center;
-        margin:0 .25rem 0 .25rem;
-        color:$color-secondary;
-       
+        margin: 0 .25rem 0 .25rem;
+        color: $color-secondary;
+
     }
 
-    .news-header{
-        margin-top:1rem;
+    .news-header {
+        margin-top: 1rem;
     }
 
 
-    
+
 
 }
 
 
 
-.heading{
+.heading {
 
-    margin:.75rem;
-    background:$color-primary;
-    color:$color-tertiary;
+    margin: .75rem;
+    background: $color-primary;
+    color: $color-tertiary;
     box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 
-    
-    h1{
+
+    h1 {
         font-size: 1.5rem;
-        padding:.75rem;
-        margin:0;
+        padding: .75rem;
+        margin: 0;
 
     }
-    
+
 }
 
 
-#event-calender{
+#event-calender {
 
 
-    .row{
-        margin:0;
+    .row {
+        margin: 0;
 
 
     }
 
 
-    .col-12{
-        padding:0;
+    .col-12 {
+        padding: 0;
     }
 
     margin-top:1rem;
-    .event-header{
-        padding:0;
-        width:100%;
-        height:200px;
+
+    .event-header {
+        padding: 0;
+        width: 100%;
+        height: 200px;
         object-fit: cover;
-        
+
         box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 
     }
 
-    .banner{
+    .banner {
         background: $color-primary;
-        color:$color-tertiary;
-       
+        color: $color-tertiary;
+
         margin: 0 0 1rem 0;
-       
+
         box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
-        padding:0;
+        padding: 0;
 
-        
-        width:100%;
 
-     
-        .title{ 
+        width: 100%;
+
+
+        .title {
             color: $color-secondary;
-            font-weight:700;
-            font-size:.9rem;
-            padding-top:.5rem;
-            
+            font-weight: 700;
+            font-size: .9rem;
+            padding-top: .5rem;
+
         }
-        .date{
-            font-size:1.5rem;
+
+        .date {
+            font-size: 1.5rem;
             color: $color-secondary;
-            font-weight:700;
-            padding-top:.5rem;
+            font-weight: 700;
+            padding-top: .5rem;
 
-      
-        }
-        .col-8{
-            padding:0 .5rem 0 0;
-        }
-        p{
-            font-size:.5rem;
+
         }
 
-        br{
-            margin:0;
+        .col-8 {
+            padding: 0 .5rem 0 0;
         }
- 
+
+        p {
+            font-size: .5rem;
+        }
+
+        br {
+            margin: 0;
+        }
+
 
     }
 
@@ -349,8 +348,8 @@ $color-tertiary: #FFFFFF;
 
 footer {
 
-    background:$color-primary;
-    color:$color-secondary;
+    background: $color-primary;
+    color: $color-secondary;
     font-weight: bold;
     text-align: center;
 

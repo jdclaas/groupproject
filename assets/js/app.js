@@ -148,21 +148,17 @@ $(document).ready(function () {
 
         requestNews(queryURL)
        
-        // for (var j = 0; j < search.length; j++) {
-        //     code = search.charCodeAt(j);
-        //     if (!(code > 47 && code < 58) && // numeric (0-9)
-        //         !(code > 64 && code < 91) && // upper alpha (A-Z)
-        //         !(code > 96 && code < 123)) { // lower alpha (a-z)
-        //       alert("Please only use numbers and letters"); 
-        //       return false
-        //     }
-        //   }
-        //   return true
-       
-    });
     
-            
-            
+        for (i = 0, len = candidate.length; i < len; i++) {
+            code = candidate.charCodeAt(i);
+            if (!(code > 47 && code < 58) && // numeric (0-9)
+                !(code > 64 && code < 91) && // upper alpha (A-Z)
+                !(code > 96 && code < 123)) { // lower alpha (a-z)      
+                return false;
+            }
+          }
+          return true;
+    });
 
     function createBio(event) {
         $(".name").empty();
@@ -190,15 +186,20 @@ $(document).ready(function () {
         }
 
     }
-
+    
     // function for adding dropbox links
     function requestNews(url) {
         $.ajax({
             url: url,
             method: "GET"
         }).then(function (response) {
+            if (response.totalResults == 0) {
+                $("#alert").text("Nothing found, search again")
+                return
+            }
+            $("#alert").text("")
             $('#news-articles').empty()
-
+console.log("hello", response)
             // Loop to bring back articles
 
             for (i = 0; i < articleNum; i++) {
@@ -217,9 +218,12 @@ $(document).ready(function () {
 
                 var articleImg = $('<img class="news-img">');
                 var imgData = $('<div class="img-area col-4">');
-                articleImg.attr("src", mainImg);
+                articleImg.attr({"src": mainImg,
+                target: "_blank" });
+
                 var url = $('<a>');
-                url.attr("href", articleURL);
+                url.attr({"href": articleURL,
+                target: "_blank"});
                 url.append(articleImg);
 
 
@@ -247,9 +251,10 @@ $(document).ready(function () {
 
             }
 
-        });
-
+            }).catch(function(err){console.log(err)});
+      
     };
+
 
     // Make Candidate Menu
     function makeCandidate() {
