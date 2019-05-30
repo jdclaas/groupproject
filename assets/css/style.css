@@ -144,7 +144,8 @@
   width: 100%;
 }
 
-.modal-content, .modal-header {
+.modal-content,
+.modal-header {
   border-radius: 0;
   border: none;
 }
@@ -167,7 +168,8 @@
   text-transform: uppercase;
 }
 
-.modal-footer .form-control, .modal-footer .btn {
+.modal-footer .form-control,
+.modal-footer .btn {
   background-color: #0F1317;
   color: #FFFFFF;
 }
