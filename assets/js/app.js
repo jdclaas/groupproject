@@ -3,7 +3,7 @@ $(document).ready(function () {
     // News API Variables
     var apikey = "5a3ba875603a48dc9469e6852a05d8be"
     var articleNum = 5;
-    var election = 2020;
+    var search = 2020;
     var candidate;
     var candidateId;
     var queryURL;
@@ -139,26 +139,25 @@ $(document).ready(function () {
     // On click of search button - push search term into candidate variable
     $('#search-button').on("click", function () {
         event.preventDefault();
-        console.log("Submit Clicked")
-        candidate = $('#search-bar').val();
-        console.log("Candidate: " + candidate)
-        queryURL = "https://newsapi.org/v2/everything?q=" + candidate + "&apiKey=" + apikey +
+        console.log("Submit Clicked");
+        search = $('#search-bar').val();
+        console.log("Search Query: " + search)
+        queryURL = "https://newsapi.org/v2/everything?q=" + search + "&apiKey=" + apikey +
             "&language=en&sources=fox-news,cnn";
         console.log(queryURL)
 
         requestNews(queryURL)
        
-    
-        for (i = 0, len = candidate.length; i < len; i++) {
-            code = candidate.charCodeAt(i);
-            if (!(code > 47 && code < 58) && // numeric (0-9)
-                !(code > 64 && code < 91) && // upper alpha (A-Z)
-                !(code > 96 && code < 123)) { // lower alpha (a-z)
-              alert("PLease only use numbers and letters"); 
-              return false;
-            }
-          }
-          return true;
+        // for (var j = 0; j < search.length; j++) {
+        //     code = search.charCodeAt(j);
+        //     if (!(code > 47 && code < 58) && // numeric (0-9)
+        //         !(code > 64 && code < 91) && // upper alpha (A-Z)
+        //         !(code > 96 && code < 123)) { // lower alpha (a-z)
+        //       alert("Please only use numbers and letters"); 
+        //       return false
+        //     }
+        //   }
+        //   return true
        
     });
     
@@ -189,15 +188,6 @@ $(document).ready(function () {
         }
 
     }
-
-    // function createEducate (event) {
-    //     for ( var i = 0; i < educationArray.length; i++) {
-
-    //         var space = $('<br>');
-    //         $(".education").append(educationArray[i].degree + " " + educationArray[i].school + " " + educationArray[i].span)
-    //         $('.education').append(space)
-    //     }
-    // }
 
     // function for adding dropbox links
     function requestNews(url) {
@@ -311,7 +301,7 @@ $(document).ready(function () {
             "&language=en&sources=fox-news,cnn";
         console.log(candidateQueryURL)
         // Create the return object
-        VSQueryURLD = "http://api.votesmart.org/CandidateBio.getDetailedBio?key=" + votesSmartKey + "&candidateId=" + candidateId;
+        VSQueryURLD = "http://api.votesmart.org/CandidateBio.getDetailedBio?key=" + votesSmartKey + "&candidateId=" + candidateId + "&o=JSON";
 
         // wikipedia Variables
         var wikiURL = "https://en.wikipedia.org/api/rest_v1/page/summary/";
@@ -338,24 +328,24 @@ $(document).ready(function () {
             url: VSQueryURLD,
             method: "GET"
         }).then(function (response) {
-            var json = xmlToJson(response);
+            // var json = xmlToJson(response);
 
 
-            console.log(json)
+            // console.log(json)
 
-            lastName = json.bio.candidate.lastName
-            firstName = json.bio.candidate.firstName
-            gender = json.bio.candidate.gender
-            dob = json.bio.candidate.birthDate
-            placeOfBirth = json.bio.candidate.birthPlace
-            party = json.bio.election.parties
-            candidateImg = json.bio.candidate.photo
-            educationArray = json.bio.candidate.education.institution
+            lastName = response.bio.candidate.lastName;
+            firstName = response.bio.candidate.firstName;
+            gender = response.bio.candidate.gender;
+            dob = response.bio.candidate.birthDate;
+            placeOfBirth = response.bio.candidate.birthPlace;
+            party = response.bio.election.parties;
+            candidateImg = response.bio.candidate.photo;
+            educationArray = response.bio.candidate.education.institution;
 
 
-            if (json.bio.office) {
-                officeName = json.bio.office.title
-                office = json.bio.office.stateId
+            if (response.bio.office) {
+                officeName = response.bio.office.title
+                office = response.bio.office.stateId
             } else {
                 officeName = "n/a"
                 office = ""
@@ -370,46 +360,46 @@ $(document).ready(function () {
         });
 
         // Modified version from here: http://davidwalsh.name/convert-xml-json
-        function xmlToJson(xml) {
+        // function xmlToJson(xml) {
 
-            // Create the return object
-            var obj = {};
+        //     // Create the return object
+        //     var obj = {};
 
-            if (xml.nodeType == 1) { // element
-                // do attributes
-                if (xml.attributes.length > 0) {
-                    obj["@attributes"] = {};
-                    for (var j = 0; j < xml.attributes.length; j++) {
-                        var attribute = xml.attributes.item(j);
-                        obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
-                    }
-                }
-            } else if (xml.nodeType == 3) { // text
-                obj = xml.nodeValue;
-            }
+        //     if (xml.nodeType == 1) { // element
+        //         // do attributes
+        //         if (xml.attributes.length > 0) {
+        //             obj["@attributes"] = {};
+        //             for (var j = 0; j < xml.attributes.length; j++) {
+        //                 var attribute = xml.attributes.item(j);
+        //                 obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+        //             }
+        //         }
+        //     } else if (xml.nodeType == 3) { // text
+        //         obj = xml.nodeValue;
+        //     }
 
-            // do children
-            // If just one text node inside
-            if (xml.hasChildNodes() && xml.childNodes.length === 1 && xml.childNodes[0].nodeType === 3) {
-                obj = xml.childNodes[0].nodeValue;
-            } else if (xml.hasChildNodes()) {
-                for (var i = 0; i < xml.childNodes.length; i++) {
-                    var item = xml.childNodes.item(i);
-                    var nodeName = item.nodeName;
-                    if (typeof (obj[nodeName]) == "undefined") {
-                        obj[nodeName] = xmlToJson(item);
-                    } else {
-                        if (typeof (obj[nodeName].push) == "undefined") {
-                            var old = obj[nodeName];
-                            obj[nodeName] = [];
-                            obj[nodeName].push(old);
-                        }
-                        obj[nodeName].push(xmlToJson(item));
-                    }
-                }
-            }
-            return obj;
-        };
+        //     // do children
+        //     // If just one text node inside
+        //     if (xml.hasChildNodes() && xml.childNodes.length === 1 && xml.childNodes[0].nodeType === 3) {
+        //         obj = xml.childNodes[0].nodeValue;
+        //     } else if (xml.hasChildNodes()) {
+        //         for (var i = 0; i < xml.childNodes.length; i++) {
+        //             var item = xml.childNodes.item(i);
+        //             var nodeName = item.nodeName;
+        //             if (typeof (obj[nodeName]) == "undefined") {
+        //                 obj[nodeName] = xmlToJson(item);
+        //             } else {
+        //                 if (typeof (obj[nodeName].push) == "undefined") {
+        //                     var old = obj[nodeName];
+        //                     obj[nodeName] = [];
+        //                     obj[nodeName].push(old);
+        //                 }
+        //                 obj[nodeName].push(xmlToJson(item));
+        //             }
+        //         }
+        //     }
+        //     return obj;
+        // };
 
         // not sure where to put this to hide the card
         // $(".can-menu").addClass(["card-hidden"]);
@@ -420,7 +410,7 @@ $(document).ready(function () {
 
     makeCandidate();
 
-    queryURL = "https://newsapi.org/v2/everything?q=" + election + "&apiKey=" + apikey +
+    queryURL = "https://newsapi.org/v2/everything?q=" + search + "&apiKey=" + apikey +
         "&language=en&sources=fox-news,cnn";
     console.log(queryURL)
 
