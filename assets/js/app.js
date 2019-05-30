@@ -8,6 +8,7 @@ $(document).ready(function () {
     var candidateId;
     var queryURL;
     var candidateQueryURL;
+    var alert = "Please only use letters and numbers in the Search Field";
 
 
     // VoteSmart API Variables
@@ -138,22 +139,24 @@ $(document).ready(function () {
 
     // On click of search button - push search term into candidate variable
     $('#search-button').on("click", function () {
+        $("#alert").empty();
         event.preventDefault();
         console.log("Submit Clicked");
         search = $('#search-bar').val();
+        console.log(checkField(search))
         console.log("Search Query: " + search)
         queryURL = "https://newsapi.org/v2/everything?q=" + search + "&apiKey=" + apikey +
             "&language=en&sources=fox-news,cnn";
         console.log(queryURL)
 
         requestNews(queryURL)
-       
+
         // for (var j = 0; j < search.length; j++) {
         //     code = search.charCodeAt(j);
         //     if (!(code > 47 && code < 58) && // numeric (0-9)
         //         !(code > 64 && code < 91) && // upper alpha (A-Z)
         //         !(code > 96 && code < 123)) { // lower alpha (a-z)
-        //       alert("Please only use numbers and letters"); 
+        //       $("#alert").append("Please only use letters and numbers in the search field.");
         //       return false
         //     }
         //   }
@@ -161,7 +164,7 @@ $(document).ready(function () {
        
     });
     
-            
+        
             
 
     function createBio(event) {
@@ -248,6 +251,7 @@ $(document).ready(function () {
         });
 
     };
+
 
     // Make Candidate Menu
     function makeCandidate() {
