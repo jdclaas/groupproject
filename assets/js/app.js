@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     // News API Variables
-    var apikey = "b0ea2322bfc0471a987b7f4ecef6a106"
+    var apikey = "5a3ba875603a48dc9469e6852a05d8be"
     var articleNum = 5;
     var election = 2020;
     var candidate;
@@ -21,7 +21,11 @@ $(document).ready(function () {
     var office;
     var officeName;
     var votesSmartKey = "a8c2fd7495b5d4f49f009034402bffb1";
-    var VSQueryURL;
+    var VSQueryURLD;
+    var bio;
+    var educationArray;
+
+
 
     // Candidates Menu Variables
     var candidateObj = [{
@@ -151,9 +155,39 @@ $(document).ready(function () {
             
     );
 
+    function createBio(event) {
+        $(".name").empty();
+        $(".gender").empty();
+        $(".dob").empty();
+        $(".placeOfBirth").empty();
+        $(".party").empty();
+        $(".office").empty();
+        $(".education").empty();
 
-        
+        $(".name").append(firstName + " " + lastName);
+        $(".gender").append(gender);
+        $(".dob").append(dob);
+        $(".placeOfBirth").append(placeOfBirth);
+        $(".party").append(party);
+        $(".office").append(office + " " + officeName);
+        $(".pol-img").attr('src', candidateImg);
+        for ( var i = 0; i < educationArray.length; i++) {
 
+            var space = $('<br>');
+            $(".education").append(educationArray[i].degree + " " + educationArray[i].school + " " + educationArray[i].span)
+            $('.education').append(space)
+        }
+
+    }
+
+    // function createEducate (event) {
+    //     for ( var i = 0; i < educationArray.length; i++) {
+
+    //         var space = $('<br>');
+    //         $(".education").append(educationArray[i].degree + " " + educationArray[i].school + " " + educationArray[i].span)
+    //         $('.education').append(space)
+    //     }
+    // }
 
     // function for adding dropbox links
     function requestNews(url) {
@@ -267,19 +301,31 @@ $(document).ready(function () {
             "&language=en&sources=fox-news,cnn";
         console.log(candidateQueryURL)
         // Create the return object
-        VSQueryURL = "http://api.votesmart.org/CandidateBio.getBio?key=" + votesSmartKey + "&candidateId=" + candidateId;
+        VSQueryURLD = "http://api.votesmart.org/CandidateBio.getDetailedBio?key=" + votesSmartKey + "&candidateId=" + candidateId;
 
+        // wikipedia Variables
+        var wikiURL = "https://en.wikipedia.org/api/rest_v1/page/summary/";
+    
+        wikiURL += candidate;
 
-        $(".name").empty();
-        $(".gender").empty();
-        $(".dob").empty();
-        $(".placeOfBirth").empty();
-        $(".party").empty();
-        $(".office").empty();
+        console.log(wikiURL)
 
+        $.ajax( {
+            url: wikiURL,
+        //   dataType: 'jsonp',
+            method: "GET"
+        }).then(function(response){
+            $(document).text(JSON.stringify(response));
+
+            console.log(response.extract)
+
+            bio = response.extract
+            $(".bio").append(bio + " " + "(source: wikipedia.org)")
+
+        });
 
         $.ajax({
-            url: VSQueryURL,
+            url: VSQueryURLD,
             method: "GET"
         }).then(function (response) {
             var json = xmlToJson(response);
@@ -294,6 +340,7 @@ $(document).ready(function () {
             placeOfBirth = json.bio.candidate.birthPlace
             party = json.bio.election.parties
             candidateImg = json.bio.candidate.photo
+            educationArray = json.bio.candidate.education.institution
 
 
             if (json.bio.office) {
@@ -302,30 +349,12 @@ $(document).ready(function () {
             } else {
                 officeName = "n/a"
                 office = ""
-            }
-
-
-
-
-
-            function createBio(event) {
-                
-
-                $(".name").append(firstName + " " + lastName);
-                $(".gender").append(gender);
-                $(".dob").append(dob);
-                $(".placeOfBirth").append(placeOfBirth);
-                $(".party").append(party);
-                $(".office").append(office + " " + officeName);
-                $(".pol-img").attr('src', candidateImg);
-
-
             };
 
             $(document).ready(createBio);
 
 
-            console.log("XML :" + VSQueryURL);
+            console.log("XML :" + VSQueryURLD);
             requestNews(candidateQueryURL)
 
         });
