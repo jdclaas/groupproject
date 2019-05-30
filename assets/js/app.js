@@ -21,6 +21,8 @@ $(document).ready(function () {
     var officeName;
     var votesSmartKey = "a8c2fd7495b5d4f49f009034402bffb1";
     var VSQueryURL;
+    var education;
+    var bio;
 
     // Candidates Menu Variables
     var candidateObj = [{
@@ -251,8 +253,9 @@ $(document).ready(function () {
             "&language=en&sources=fox-news,cnn";
         console.log(candidateQueryURL)
         // Create the return object
-        VSQueryURL = "http://api.votesmart.org/CandidateBio.getBio?key=" + votesSmartKey + "&candidateId=" + candidateId;
-
+        VSQueryURL = "http://api.votesmart.org/CandidateBio.getBio?key=" + votesSmartKey + "&candidateId=" + candidateId + "&o=JSON";
+        VSQueryURLD = "http://api.votesmart.org/CandidateBio.getDetailedBio?key=" + votesSmartKey + "&candidateId=" + candidateId + "&o=JSON";
+        VSQueryURLS = "http://api.votesmart.org/Address.getCampaignWebAddress?key=" + votesSmartKey + "&candidateId=" + candidateId + "&o=JSON";
 
         $(".name").empty();
         $(".gender").empty();
@@ -260,39 +263,122 @@ $(document).ready(function () {
         $(".placeOfBirth").empty();
         $(".party").empty();
         $(".office").empty();
+        $('.bio').empty();
+        $('.education').empty();
 
 
-        $.ajax({
-            url: VSQueryURL,
-            method: "GET"
-        }).then(function (response) {
-            var json = xmlToJson(response);
+        // $.ajax({
+        //     url: VSQueryURL,
+        //     method: "GET"
+        // }).then(function (response) {
+        //     // var json = xmlToJson(response);
 
 
-            console.log(json)
+        //     console.log(response)
 
-            lastName = json.bio.candidate.lastName
-            firstName = json.bio.candidate.firstName
-            gender = json.bio.candidate.gender
-            dob = json.bio.candidate.birthDate
-            placeOfBirth = json.bio.candidate.birthPlace
-            party = json.bio.election.parties
-            candidateImg = json.bio.candidate.photo
+        //     lastName = response.bio.candidate.lastName
+        //     firstName = response.bio.candidate.firstName
+        //     gender = response.bio.candidate.gender
+        //     dob = response.bio.candidate.birthDate
+        //     placeOfBirth = response.bio.candidate.birthPlace
+        //     party = response.bio.election.parties
+        //     candidateImg = response.bio.candidate.photo
 
 
-            if (json.bio.office) {
-                officeName = json.bio.office.title
-                office = json.bio.office.stateId
+        //     if (response.bio.office) {
+        //         officeName = json.bio.office.title
+        //         office = json.bio.office.stateId
+        //     } else {
+        //         officeName = "n/a"
+        //         office = ""
+        //     }
+
+
+
+    var wikiURL = "https://en.wikipedia.org/api/rest_v1/page/summary/";
+
+    wikiURL += candidate;
+
+
+      console.log(wikiURL)
+
+     $.ajax( {
+      url: wikiURL,
+    //   dataType: 'jsonp',
+      method: "GET"
+     }).then(function(response){
+        $(document).text(JSON.stringify(response));
+
+        console.log(response.extract)
+
+        var bio = response.extract
+        $(".bio").append(bio + " " + "(source: wikipedia.org)")
+
+     });
+
+            $.ajax({
+                url: VSQueryURLD,
+                method: "GET"
+            }).then(function (response) {
+
+                console.log(response)
+
+
+            lastName = response.bio.candidate.lastName
+            firstName = response.bio.candidate.firstName
+            gender = response.bio.candidate.gender
+            dob = response.bio.candidate.birthDate
+            placeOfBirth = response.bio.candidate.birthPlace
+            party = response.bio.election.parties
+            candidateImg = response.bio.candidate.photo
+
+
+            if (response.bio.office) {
+                officeName = response.bio.office.title
+                office = response.bio.office.stateId
             } else {
                 officeName = "n/a"
                 office = ""
             }
 
+            educationArray = response.bio.candidate.education.institution
 
+            for ( var i = 0; i<educationArray.length; i++) {
+
+            var space = $('<br>');
+            $(".education").append(educationArray[i].degree + " " + educationArray[i].school + " " + educationArray[i].span)
+            $('.education').append(space)
+            
+               
+            }
+        
+
+            });
+
+            $.ajax({
+                url: VSQueryURLS,
+                method: "GET"
+            }).then(function (response) {
+
+                console.log(response);
+
+
+            mediaLinks = response.webaddress.address
+            
+            for (var i = 0; i < mediaLinks.length; i++) {
+
+                console.log(mediaLinks[i].webAddress)
+
+            }
+
+
+            });    
 
 
 
             function createBio(event) {
+
+                console.log(education)
                 
 
                 $(".name").append(firstName + " " + lastName);
@@ -310,57 +396,58 @@ $(document).ready(function () {
 
 
             console.log("XML :" + VSQueryURL);
+            console.log("XML :" + VSQueryURLD);
             requestNews(candidateQueryURL)
 
         });
 
-        // Modified version from here: http://davidwalsh.name/convert-xml-json
-        function xmlToJson(xml) {
+        // // Modified version from here: http://davidwalsh.name/convert-xml-json
+        // function xmlToJson(xml) {
 
-            // Create the return object
-            var obj = {};
+        //     // Create the return object
+        //     var obj = {};
 
-            if (xml.nodeType == 1) { // element
-                // do attributes
-                if (xml.attributes.length > 0) {
-                    obj["@attributes"] = {};
-                    for (var j = 0; j < xml.attributes.length; j++) {
-                        var attribute = xml.attributes.item(j);
-                        obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
-                    }
-                }
-            } else if (xml.nodeType == 3) { // text
-                obj = xml.nodeValue;
-            }
+        //     if (xml.nodeType == 1) { // element
+        //         // do attributes
+        //         if (xml.attributes.length > 0) {
+        //             obj["@attributes"] = {};
+        //             for (var j = 0; j < xml.attributes.length; j++) {
+        //                 var attribute = xml.attributes.item(j);
+        //                 obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+        //             }
+        //         }
+        //     } else if (xml.nodeType == 3) { // text
+        //         obj = xml.nodeValue;
+        //     }
 
-            // do children
-            // If just one text node inside
-            if (xml.hasChildNodes() && xml.childNodes.length === 1 && xml.childNodes[0].nodeType === 3) {
-                obj = xml.childNodes[0].nodeValue;
-            } else if (xml.hasChildNodes()) {
-                for (var i = 0; i < xml.childNodes.length; i++) {
-                    var item = xml.childNodes.item(i);
-                    var nodeName = item.nodeName;
-                    if (typeof (obj[nodeName]) == "undefined") {
-                        obj[nodeName] = xmlToJson(item);
-                    } else {
-                        if (typeof (obj[nodeName].push) == "undefined") {
-                            var old = obj[nodeName];
-                            obj[nodeName] = [];
-                            obj[nodeName].push(old);
-                        }
-                        obj[nodeName].push(xmlToJson(item));
-                    }
-                }
-            }
-            return obj;
-        };
+        //     // do children
+        //     // If just one text node inside
+        //     if (xml.hasChildNodes() && xml.childNodes.length === 1 && xml.childNodes[0].nodeType === 3) {
+        //         obj = xml.childNodes[0].nodeValue;
+        //     } else if (xml.hasChildNodes()) {
+        //         for (var i = 0; i < xml.childNodes.length; i++) {
+        //             var item = xml.childNodes.item(i);
+        //             var nodeName = item.nodeName;
+        //             if (typeof (obj[nodeName]) == "undefined") {
+        //                 obj[nodeName] = xmlToJson(item);
+        //             } else {
+        //                 if (typeof (obj[nodeName].push) == "undefined") {
+        //                     var old = obj[nodeName];
+        //                     obj[nodeName] = [];
+        //                     obj[nodeName].push(old);
+        //                 }
+        //                 obj[nodeName].push(xmlToJson(item));
+        //             }
+        //         }
+        //     }
+        //     return obj;
+        // };
 
         // not sure where to put this to hide the card
         // $(".can-menu").addClass(["card-hidden"]);
 
 
-    });
+
 
 
     makeCandidate();
@@ -372,4 +459,4 @@ $(document).ready(function () {
     requestNews(queryURL)
 
 
-})
+});
