@@ -172,6 +172,8 @@ $(document).ready(function () {
         $(".party").empty();
         $(".office").empty();
         $(".education").empty();
+        
+
 
         $(".name").append(firstName + " " + lastName);
         $(".gender").append(gender);
@@ -255,7 +257,7 @@ $(document).ready(function () {
         for (var x = 0; x < candidateObj.length; x++) {
             console.log(candidateObj[x].name, candidateObj[x].id);
             var candidateDiv = $('<div>');
-            candidateDiv.attr("class", "col-md-3 col-4 col-lg-3 candidate")
+            candidateDiv.attr("class", "col-md-3 col-4 col-lg-2 candidate text-center")
             candidateDiv.attr({
             "data-toggle": "modal",
             "data-target": "#exampleModal",
@@ -316,6 +318,8 @@ $(document).ready(function () {
             method: "GET"
         }).then(function(response){
             $(document).text(JSON.stringify(response));
+
+            $(".bio").empty();
 
             console.log(response.extract)
 

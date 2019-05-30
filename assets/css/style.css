@@ -44,16 +44,15 @@
 }
 
 .navbar .navbar-nav .active {
-  width: 100%;
-  background-color: #424343;
+  color: #00BBE2;
+  text-decoration: underline;
   -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
           box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
-  font-size: 23px;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 #searcher {
-  margin: 1.5rem 0 1rem 0;
+  margin: 1rem 0 1rem 0;
   width: 100%;
 }
 
@@ -125,10 +124,29 @@
 
 #politician-menu {
   padding-top: 1rem;
+  margin: auto;
+}
+
+#politician-menu .candidate {
+  cursor: pointer;
+  margin: .5rem 0;
+}
+
+#politician-menu .candidate img {
+  width: 100%;
+}
+
+#politician-menu .btn {
+  background-color: #00BBE2;
+  color: #FFFFFF;
+  text-align: center;
+  margin-top: .5rem;
+  width: 100%;
 }
 
 .modal-content, .modal-header {
   border-radius: 0;
+  border: none;
 }
 
 .modal-header {
@@ -147,6 +165,11 @@
 
 .modal-header .modal-title {
   text-transform: uppercase;
+}
+
+.modal-footer .form-control, .modal-footer .btn {
+  background-color: #0F1317;
+  color: #FFFFFF;
 }
 
 #politician-area .heading {
@@ -187,13 +210,17 @@
 }
 
 .heading {
-  margin: 1rem 0;
+  margin: .75rem;
   background: #0F1317;
   color: #FFFFFF;
+  -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .heading h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  padding: .75rem;
+  margin: 0;
 }
 
 #event-calender {
@@ -254,10 +281,30 @@
   margin: 0;
 }
 
+footer {
+  background: #0F1317;
+  color: #00BBE2;
+  font-weight: bold;
+  text-align: center;
+}
+
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
 */
+@media (max-width: 576px) {
+  #politician-menu .btn {
+    font-size: .5rem;
+  }
+  .heading {
+    margin: .5rem .25rem 0 .25rem;
+  }
+  .heading h1 {
+    font-size: 1rem;
+    padding: 1rem 0;
+  }
+}
+
 @media (min-width: 1200px) {
   #event-calender .banner {
     height: 200px;
@@ -273,6 +320,13 @@
   }
   #event-calender .banner p {
     font-size: 1rem;
+  }
+  .heading {
+    margin: 1rem 3rem;
+  }
+  .heading h1 {
+    font-size: 2rem;
+    padding: 1rem;
   }
 }
 
@@ -294,6 +348,13 @@
   }
   #event-calender .banner p {
     font-size: .75rem;
+  }
+  .heading {
+    margin: 1rem 3rem;
+  }
+  .heading h1 {
+    font-size: 1.5rem;
+    padding: 1rem;
   }
 }
 
