@@ -9,6 +9,7 @@ $(document).ready(function () {
     var queryURL;
     var candidateQueryURL;
 
+
     // VoteSmart API Variables
     var candidateImg;
     var firstName;
